@@ -1,0 +1,11 @@
+  
+{
+	"name": "com.isolarv.helper-tools",
+	"displayName": "Isolarv Helper Tools",
+	"version": "1.0.0",
+	"description": "Custom helper tools.",
+	"dependencies": 
+	{
+		
+	}
+}

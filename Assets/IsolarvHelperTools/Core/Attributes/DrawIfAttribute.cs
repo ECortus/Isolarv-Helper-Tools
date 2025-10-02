@@ -4,8 +4,18 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace IsolarvHelperTools.Editor
+namespace IsolarvHelperTools
 {
+    public enum EComparisonType
+    {
+        Equals = 1,
+        NotEqual = 2,
+        GreaterThan = 3,
+        SmallerThan = 4,
+        SmallerOrEqual = 5,
+        GreaterOrEqual = 6
+    }
+    
     public enum EDisablingType
     {
         ReadOnly = 2,
@@ -85,8 +95,23 @@ namespace IsolarvHelperTools.Editor
                 return true;
             }
             
-            var value = AttributesHelper.CompareFieldAndObject(comparedField, drawIf.comparedValue);
+            var value = CompareFieldAndObject();
             return value;
+        }
+        
+        bool CompareFieldAndObject()
+        {
+            object comparedValue = drawIf.comparedValue;
+            switch (comparedField.type)
+            {
+                case "bool":
+                    return comparedField.boolValue.Equals(comparedValue);
+                case "Enum":
+                    return comparedField.enumValueIndex.Equals((int)comparedValue);
+                default:
+                    Debug.LogError("Error of attribute helper: " + comparedField.type + " is not supported.");
+                    return true;
+            }
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
