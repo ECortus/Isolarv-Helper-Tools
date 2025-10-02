@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace IsolarvHelperTools
 {
-    public static class UnitaskHelper
+    public static class UniTaskHelper
     {
         public static void Create(Func<UniTask> factory)
         {
