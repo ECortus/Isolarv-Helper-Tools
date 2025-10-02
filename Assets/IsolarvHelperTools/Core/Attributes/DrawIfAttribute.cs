@@ -91,7 +91,7 @@ namespace IsolarvHelperTools
 
             if (comparedField == null)
             {
-                Debug.LogError("Cannot find property with name: " + path);
+                DebugHelper.LogError("Cannot find property with name: " + path);
                 return true;
             }
             
@@ -109,7 +109,7 @@ namespace IsolarvHelperTools
                 case "Enum":
                     return comparedField.enumValueIndex.Equals((int)comparedValue);
                 default:
-                    Debug.LogError("Error of attribute helper: " + comparedField.type + " is not supported.");
+                    DebugHelper.LogError("Error of attribute helper: " + comparedField.type + " is not supported.");
                     return true;
             }
         }

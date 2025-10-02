@@ -6,19 +6,19 @@ namespace IsolarvHelperTools
     {
         public static void Destroy(Object obj)
         {
-            // Debug.Log("Destroying object: " + obj);
+            DebugHelper.Log("Destroying object: " + obj);
             GameObject.Destroy(obj);
         }
         
         public static void Destroy(Object obj, float time)
         {
-            // Debug.Log("Destroying object: " + obj + " in " + time + " seconds");
+            DebugHelper.Log("Destroying object: " + obj + " in " + time + " seconds");
             GameObject.Destroy(obj, time);
         }
         
         public static void DestroyImmediate(Object obj)
         {
-            // Debug.Log("Immediate destroying object: " + obj);
+            DebugHelper.Log("Immediate destroying object: " + obj);
             GameObject.DestroyImmediate(obj);
         }
         

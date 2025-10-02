@@ -32,7 +32,7 @@ namespace IsolarvHelperTools
 
                 if (initialCount != _actions.Count)
                 {
-                    Debug.LogError("Fire event actions changed during performance");
+                    DebugHelper.LogError("Fire event actions changed during performance");
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace IsolarvHelperTools
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"An error occurred while executing action at index {i}: {e}");
+                    DebugHelper.LogError($"An error occurred while executing action at index {i}: {e}");
                 }
             }
         }

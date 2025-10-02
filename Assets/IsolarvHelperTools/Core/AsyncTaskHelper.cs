@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace IsolarvHelperTools
 {
-    public static class UniTaskHelper
+    public static class AsyncTaskHelper
     {
-        public static void Create(Func<UniTask> factory)
+        public static void CreateTask(Func<UniTask> factory)
         {
             UniTask.Create(async () =>
             {

@@ -73,7 +73,7 @@ namespace IsolarvHelperTools
 
         protected virtual void StartSystem()
         {
-            UniTaskHelper.Create(async () => await UpdateElementLogic());
+            AsyncTaskHelper.CreateTask(async () => await UpdateElementLogic());
         }
         
         async UniTask UpdateElementLogic()

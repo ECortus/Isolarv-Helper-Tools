@@ -8,6 +8,8 @@ namespace IsolarvHelperTools.Editor
 {
     public abstract class CustomEditorModule : UnityEditor.Editor
     {
+        protected virtual bool DrawExcludedProperties => false;
+        
         protected virtual void OnEnable()
         {
             
@@ -27,6 +29,17 @@ namespace IsolarvHelperTools.Editor
             OnEditorDraw();
             Space();
 
+            if (DrawExcludedProperties)
+            {
+                OnDrawExcludedProperties();
+            }
+            
+            serializedObject.ApplyModifiedProperties();
+            serializedObject.Update();
+        }
+
+        void OnDrawExcludedProperties()
+        {
             var propertiesToExclude = GetPropertiesToExclude();
             
             var toExclude = new string[propertiesToExclude.Length + 1];
@@ -34,9 +47,6 @@ namespace IsolarvHelperTools.Editor
             Array.Copy(propertiesToExclude, 0, toExclude, 1, propertiesToExclude.Length);
             
             DrawPropertiesExcluding(toExclude.ToList());
-            
-            serializedObject.ApplyModifiedProperties();
-            serializedObject.Update();
         }
         
         void DrawPropertiesExcluding(List<string> propertiesToExclude)
@@ -82,14 +92,26 @@ namespace IsolarvHelperTools.Editor
             }
         }
         
-        protected bool GetBoolValue(SerializedProperty property)
+        protected void DrawHeader(string label)
         {
-            return property.boolValue;
+            Space(5);
+            EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
+            DrawSpaceLine();
         }
         
         protected void Space(int height = 10)
         {
             GUILayout.Space(height);
+        }
+
+        protected void DrawSpaceLine()
+        {
+            EditorGUI.DrawRect(EditorGUILayout.GetControlRect(false, 2), Color.gray);
+        }
+        
+        protected bool GetBoolValue(SerializedProperty property)
+        {
+            return property.boolValue;
         }
     }
 }

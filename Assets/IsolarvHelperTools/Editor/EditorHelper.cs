@@ -74,7 +74,7 @@ namespace IsolarvHelperTools.Editor
         {
             if (!Directory.Exists(Path.GetFullPath(path)))
             {
-                Debug.LogError($"Not found directory {path}");
+                DebugHelper.LogError($"Not found directory {path}");
 
                 fullPath = "";
                 return false;

@@ -28,7 +28,7 @@ namespace IsolarvHelperTools
                     TryFindObject();
 
                     if (!_instance)
-                        Debug.LogError("Not found instance of SINGLETON object!!!");
+                        DebugHelper.LogError("Not found instance of SINGLETON object!!!");
                 }
 
                 return _instance;

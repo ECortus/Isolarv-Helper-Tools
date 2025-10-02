@@ -59,7 +59,7 @@ namespace IsolarvHelperTools
                 }
             }
 
-            Debug.LogError(string.Format("ID {0} cannot found created pool, creating pool automatically in {1} container.", id, _mainId));
+            DebugHelper.LogError(string.Format("ID {0} cannot found created pool, creating pool automatically in {1} container.", id, _mainId));
             
             CreateNewPool(id, new [] { element });
             return TryEnqueue(id, element);
@@ -76,7 +76,7 @@ namespace IsolarvHelperTools
                 }
             }
             
-            Debug.LogError(string.Format("ID {0} cannot found created pool, creating pool automatically in {1} container.", id, _mainId));
+            DebugHelper.LogError(string.Format("ID {0} cannot found created pool, creating pool automatically in {1} container.", id, _mainId));
             
             CreateNewPool(id, new [] { element });
             return TryDequeue(id, element);
@@ -93,7 +93,7 @@ namespace IsolarvHelperTools
                 }
             }
             
-            Debug.LogError(string.Format("ID {0} cannot found created pool, creating pool automatically in {1} container.", id, _mainId));
+            DebugHelper.LogError(string.Format("ID {0} cannot found created pool, creating pool automatically in {1} container.", id, _mainId));
             
             CreateNewPool(id, elements);
             return TryDequeue(id, elements);
