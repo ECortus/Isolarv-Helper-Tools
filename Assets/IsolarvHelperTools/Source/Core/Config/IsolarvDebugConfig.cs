@@ -17,26 +17,24 @@ namespace IsolarvHelperTools
             }
         }
         
-        public bool enableProjectDebug = false;
-
         #region Logging
 
         public bool enableLogging = false;
         public bool instantiateLoggerInProject = false;
         
-        public static bool ENABLE_MANUAL_LOGGING => Instance.enableProjectDebug && Instance.enableLogging;
-        public static bool INSTANTIATE_LOGGER_IN_PROJECT => Instance.enableProjectDebug && Instance.instantiateLoggerInProject;
+        public static bool ENABLE_MANUAL_LOGGING => Instance.enableLogging;
 
         #endregion
     }
     
     public class IsolarvDebugConfigHandler
     {
-        private const string CONFIG_NAME = "Isolarv-Helper-Config-Debug";
+        private const string CONFIG_NAME = "ISOLARV_DEBUG_CONFIG_SAVE_FILE";
         
         public static IsolarvDebugConfig GetDebugSettings()
         {
-            var config = JsonUtility.FromJson<IsolarvDebugConfig>(PlayerPrefs.GetString(CONFIG_NAME, "{}"));
+            var str = PlayerPrefs.GetString(CONFIG_NAME, "{}");
+            var config = JsonUtility.FromJson<IsolarvDebugConfig>(str);
             return config;
         }
 
