@@ -6,42 +6,51 @@ namespace IsolarvHelperTools
     [Serializable]
     public class IsolarvDebugConfig
     {
-        static IsolarvDebugConfig _i = null;
-        static IsolarvDebugConfig Instance
+        public bool ENABLE_MANUAL_LOGGING = false;
+        
+        public delegate void ConfigChangeMethod(ref IsolarvDebugConfig config);
+
+        public static void SetChanges(ConfigChangeMethod callback)
         {
-            get
-            {
-                if (_i == null)
-                    _i = IsolarvDebugConfigHandler.GetDebugSettings();
-                return _i;
-            }
+            var config = GetConfig();
+            
+            callback(ref config);
+            SaveConfig(config);
         }
         
-        #region Logging
+        #region Get & Save Instance
 
-        public bool enableLogging = false;
-        public bool instantiateLoggerInProject = false;
-        
-        public static bool ENABLE_MANUAL_LOGGING => Instance.enableLogging;
+        static IsolarvDebugConfig _i = null;
+        public static IsolarvDebugConfig GetConfig()
+        {
+            if (_i == null)
+                _i = Handler.GetDebugSettings();
+            return _i;
+        }
+
+        static void SaveConfig(IsolarvDebugConfig settings)
+        {
+            Handler.SetDebugSettings(settings);
+        }
 
         #endregion
-    }
-    
-    public class IsolarvDebugConfigHandler
-    {
-        private const string CONFIG_NAME = "ISOLARV_DEBUG_CONFIG_SAVE_FILE";
         
-        public static IsolarvDebugConfig GetDebugSettings()
+        static class Handler
         {
-            var str = PlayerPrefs.GetString(CONFIG_NAME, "{}");
-            var config = JsonUtility.FromJson<IsolarvDebugConfig>(str);
-            return config;
-        }
+            private const string CONFIG_NAME = "ISOLARV_DEBUG_CONFIG_SAVE_FILE";
+        
+            public static IsolarvDebugConfig GetDebugSettings()
+            {
+                var str = PlayerPrefs.GetString(CONFIG_NAME, "{}");
+                var config = JsonUtility.FromJson<IsolarvDebugConfig>(str);
+                return config;
+            }
 
-        public static void SetDebugSettings(IsolarvDebugConfig settings)
-        {
-            var config = JsonUtility.ToJson(settings);
-            PlayerPrefs.SetString(CONFIG_NAME, config);
+            public static void SetDebugSettings(IsolarvDebugConfig settings)
+            {
+                var config = JsonUtility.ToJson(settings);
+                PlayerPrefs.SetString(CONFIG_NAME, config);
+            }
         }
     }
 }

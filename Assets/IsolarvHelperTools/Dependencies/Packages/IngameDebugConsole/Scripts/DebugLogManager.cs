@@ -464,7 +464,7 @@ namespace IngameDebugConsole
 
 				// If it is a singleton object, don't destroy it between scene changes
 				if( singleton )
-					DontDestroyOnLoad( gameObject );
+					GameObject.DontDestroyOnLoad(this.gameObject);
 			}
 			else if( Instance != this )
 			{

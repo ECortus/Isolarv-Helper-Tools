@@ -7,14 +7,16 @@ namespace IsolarvHelperTools.Source.UI
     public class IsolarvDebugUI : MonoBehaviour
     {
         [SerializeField] private bool startOpen = false;
-        [SerializeField] private CanvasGroup root;
-        [SerializeField] private Button foldoutButton;
         
-        bool isOpened = false;
+        [Space(5)]
+        [SerializeField] private CanvasGroup root;
+        [SerializeField] private Button foldoutRootButton;
+        
+        bool isRootOpened = false;
         
         private void Start()
         {
-            SetupFoldoutButton();
+            SetupFoldoutButtons();
 
             if (startOpen)
                 Open();
@@ -24,33 +26,29 @@ namespace IsolarvHelperTools.Source.UI
             GameObject.DontDestroyOnLoad(this.gameObject);
         }
 
-        void SetupFoldoutButton()
+        void SetupFoldoutButtons()
         {
-            foldoutButton.onClick.AddListener(Foldout);
+            foldoutRootButton.onClick.AddListener(FoldoutRoot);
         }
 
-        void Foldout()
+        void FoldoutRoot()
         {
-            if (!isOpened)
-            {
+            if (!isRootOpened)
                 Open();
-            }
             else
-            {
                 Close();
-            }
         }
 
         void Open()
         {
             root.alpha = 1f;
-            isOpened = true;
+            isRootOpened = true;
         }
 
         void Close()
         {
             root.alpha = 0f;
-            isOpened = false;
+            isRootOpened = false;
         }
     }
 }

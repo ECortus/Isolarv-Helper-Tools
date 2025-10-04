@@ -6,7 +6,7 @@ namespace IsolarvHelperTools
     {
         public static void Log(string message)
         {
-            if (!IsolarvDebugConfig.ENABLE_MANUAL_LOGGING)
+            if (!IsolarvDebugConfig.GetConfig().ENABLE_MANUAL_LOGGING)
                 return;
             
             Debug.Log(message);
@@ -14,7 +14,7 @@ namespace IsolarvHelperTools
 
         public static void LogWarning(string message)
         {
-            if (!IsolarvDebugConfig.ENABLE_MANUAL_LOGGING)
+            if (!IsolarvDebugConfig.GetConfig().ENABLE_MANUAL_LOGGING)
                 return;
             
             Debug.LogWarning(message);
@@ -22,7 +22,7 @@ namespace IsolarvHelperTools
 
         public static void LogError(string message)
         {
-            if (!IsolarvDebugConfig.ENABLE_MANUAL_LOGGING)
+            if (!IsolarvDebugConfig.GetConfig().ENABLE_MANUAL_LOGGING)
                 return;
             
             Debug.LogError(message);
