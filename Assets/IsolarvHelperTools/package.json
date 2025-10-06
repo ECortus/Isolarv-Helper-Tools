@@ -7,10 +7,10 @@
 	"description": "Custom helper tools for easier work.",
 	"license": "MIT",
 	"category": "Isolarv",
-	"dependencies": 
+	"gitDependencies": 
 	{
-		"com.cysharp.unitask": "2.5.10",
-		"com.svermeulen.extenject": "0.0.1",
-		"com.yasirkula.ingamedebugconsole": "1.8.2"
+		"com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+		"com.svermeulen.extenject": "https://github.com/modesttree/Zenject.git?path=UnityProject/Assets/Plugins/Zenject",
+		"com.yasirkula.ingamedebugconsole": "https://github.com/yasirkula/UnityIngameDebugConsole.git"
 	}
 }
