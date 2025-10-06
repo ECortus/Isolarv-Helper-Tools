@@ -2,10 +2,15 @@
 {
 	"name": "com.isolarv.helper-tools",
 	"displayName": "Isolarv Helper Tools",
-	"version": "1.0.0",
-	"description": "Custom helper tools.",
+	"unity": "6000.2",
+	"description": "Custom helper tools for easier work.",
+	"keywords": [ ],
+	"license": "MIT",
+	"category": "Helper Tools",
 	"dependencies": 
 	{
-		
+		"com.cysharp.unitask" : "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+		"com.svermeulen.extenject" : "https://github.com/modesttree/Zenject.git?path=UnityProject/Assets/Plugins/Zenject",
+		"com.yasirkula.ingamedebugconsole" : "https://github.com/yasirkula/UnityIngameDebugConsole.git?path=Plugins/IngameDebugConsole"
 	}
 }
