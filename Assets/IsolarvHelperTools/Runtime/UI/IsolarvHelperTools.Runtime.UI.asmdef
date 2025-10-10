@@ -1,6 +1,6 @@
 {
     "name": "IsolarvHelperTools.Runtime.UI",
-    "rootNamespace": "IsolarvHelperTools.Runtime.UI",
+    "rootNamespace": "",
     "references": [
         "GUID:1078a85b23c6f9348ad1940c33461d92",
         "GUID:6055be8ebefd69e48b49212b09b47b2f"
