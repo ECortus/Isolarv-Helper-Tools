@@ -6,7 +6,7 @@ namespace IsolarvHelperTools.Runtime
 {
     public class FireEvent
     {
-        List<Action> _actions = new List<Action>();
+        readonly List<Action> _actions = new List<Action>();
 
         public void AddListener(Action action)
         {
@@ -40,8 +40,6 @@ namespace IsolarvHelperTools.Runtime
         void SafeRemovalForIteration()
         {
             _actions.Reverse();
-
-            // Iterate through the reversed list from the end, so its like from the beginning
             for (int i = _actions.Count - 1; i >= 0; i--)
             {
                 try
@@ -61,6 +59,11 @@ namespace IsolarvHelperTools.Runtime
             {
                 _actions.Remove(action);
             }
+        }
+
+        public void RemoveAllListeners()
+        {
+            _actions.Clear();
         }
 
         bool Invoked { get; set; }
