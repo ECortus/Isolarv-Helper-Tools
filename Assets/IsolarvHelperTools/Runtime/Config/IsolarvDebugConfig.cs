@@ -7,17 +7,17 @@ namespace IsolarvHelperTools.Runtime
     public class IsolarvDebugConfig
     {
         public bool ENABLE_MANUAL_LOGGING = false;
-        
+
         public delegate void ConfigChangeMethod(ref IsolarvDebugConfig config);
 
         public static void SetChanges(ConfigChangeMethod callback)
         {
             var config = GetConfig();
-            
+
             callback(ref config);
             SaveConfig(config);
         }
-        
+
         #region Get & Save Instance
 
         static IsolarvDebugConfig _i = null;
@@ -25,6 +25,10 @@ namespace IsolarvHelperTools.Runtime
         {
             if (_i == null)
                 _i = Handler.GetDebugSettings();
+
+            if (_i == null)
+                throw new SystemException("[ISOLARV DEBUG ] IsolarvDebugConfig instance is null!");
+
             return _i;
         }
 
@@ -34,11 +38,11 @@ namespace IsolarvHelperTools.Runtime
         }
 
         #endregion
-        
+
         static class Handler
         {
             private const string CONFIG_NAME = "ISOLARV_DEBUG_CONFIG_SAVE_FILE";
-        
+
             public static IsolarvDebugConfig GetDebugSettings()
             {
                 var str = PlayerPrefs.GetString(CONFIG_NAME, "{}");
