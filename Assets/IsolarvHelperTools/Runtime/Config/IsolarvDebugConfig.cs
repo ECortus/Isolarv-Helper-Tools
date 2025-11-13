@@ -6,7 +6,7 @@ namespace IsolarvHelperTools.Runtime
     [Serializable]
     public class IsolarvDebugConfig
     {
-        public bool ENABLE_MANUAL_LOGGING = false;
+        public bool ENABLE_DEBUG_LOGGING = true;
 
         public delegate void ConfigChangeMethod(ref IsolarvDebugConfig config);
 

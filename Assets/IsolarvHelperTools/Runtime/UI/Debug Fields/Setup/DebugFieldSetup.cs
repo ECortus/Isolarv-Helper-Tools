@@ -8,9 +8,9 @@
             {
                 IsolarvDebugConfig.SetChanges((ref IsolarvDebugConfig config) =>
                 {
-                    config.ENABLE_MANUAL_LOGGING = val;
+                    config.ENABLE_DEBUG_LOGGING = val;
                 });
-            }, IsolarvDebugConfig.GetConfig().ENABLE_MANUAL_LOGGING);
+            }, IsolarvDebugConfig.GetConfig().ENABLE_DEBUG_LOGGING);
         }
     }
 }
