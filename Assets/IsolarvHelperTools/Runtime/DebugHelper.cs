@@ -20,7 +20,7 @@ namespace IsolarvHelperTools.Runtime
             if (!config.ENABLE_DEBUG_LOGGING)
                 return;
             
-            Debug.Log("[ISOLARV DEBUG ]" + message);
+            Debug.Log("[Helper Tool]" + message);
         }
 
         public static void LogWarning(string message)
@@ -28,7 +28,7 @@ namespace IsolarvHelperTools.Runtime
             if (!config.ENABLE_DEBUG_LOGGING)
                 return;
             
-            Debug.LogWarning("[ISOLARV DEBUG ]" + message);
+            Debug.LogWarning("[Helper Tool] " + message);
         }
 
         public static void LogError(string message)
@@ -36,7 +36,7 @@ namespace IsolarvHelperTools.Runtime
             if (!config.ENABLE_DEBUG_LOGGING)
                 return;
             
-            Debug.LogError("[ISOLARV DEBUG ]" + message);
+            Debug.LogError("[Helper Tool] " + message);
         }
     }
 }
