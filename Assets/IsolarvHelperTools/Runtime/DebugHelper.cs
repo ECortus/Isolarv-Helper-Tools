@@ -14,15 +14,15 @@ namespace IsolarvHelperTools.Runtime
                 return _i;
             }
         }
-
+        
         public static void Log(string message)
         {
             if (!config.ENABLE_DEBUG_LOGGING)
                 return;
             
-            Debug.Log("[Helper Tool]" + message);
+            Debug.Log("[Helper Tool] " + message);
         }
-
+        
         public static void LogWarning(string message)
         {
             if (!config.ENABLE_DEBUG_LOGGING)
@@ -30,7 +30,7 @@ namespace IsolarvHelperTools.Runtime
             
             Debug.LogWarning("[Helper Tool] " + message);
         }
-
+        
         public static void LogError(string message)
         {
             if (!config.ENABLE_DEBUG_LOGGING)
