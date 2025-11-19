@@ -10,7 +10,7 @@
 	},
 	"displayName": "Isolarv Helper Tools",
 	"category": "Isolarv",
-	"description": "Custom helper tools for easier work.",
+	"description": "Custom tools/scripts and etc. for easier work.",
 	"license": "MIT",
 	"hideInEditor": false,
 	"dependencies": { }
