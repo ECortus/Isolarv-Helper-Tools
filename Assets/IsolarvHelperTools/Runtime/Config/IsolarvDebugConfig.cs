@@ -27,7 +27,7 @@ namespace IsolarvHelperTools.Runtime
                 _i = Handler.GetDebugSettings();
 
             if (_i == null)
-                throw new SystemException("[ISOLARV DEBUG ] IsolarvDebugConfig instance is null!");
+                throw new SystemException("[DEBUG CONFIG] IsolarvDebugConfig instance is null!");
 
             return _i;
         }
