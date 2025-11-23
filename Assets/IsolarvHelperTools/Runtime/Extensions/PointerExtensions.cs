@@ -11,11 +11,14 @@ namespace IsolarvHelperTools.Runtime
         /// Cast a ray to test if Input.mousePosition is over any UI object in EventSystem.current. This is a replacement
         /// for IsPointerOverGameObject() which does not work on Android in 4.6.0f3
         /// </summary>
-        
+        /// 
+        /// Referencing this code for GraphicRaycaster https://gist.github.com/stramit/ead7ca1f432f3c0f181f
+        /// the ray cast appears to require only eventData.position.
+        /// 
+
+#if ENABLE_LEGACY_INPUT_MANAGER
         public static bool IsPointerOverUIObject() 
         {
-            // Referencing this code for GraphicRaycaster https://gist.github.com/stramit/ead7ca1f432f3c0f181f
-            // the ray cast appears to require only eventData.position.
             PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
             eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
@@ -24,6 +27,18 @@ namespace IsolarvHelperTools.Runtime
             
             return results.Count > 0;
         }
+#elif ENABLE_INPUT_SYSTEM
+        public static bool IsPointerOverUIObject(Vector2 position) 
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = position;
+
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            
+            return results.Count > 0;
+        }
+#endif
 
         public static bool IsPointerOverUIObject(Canvas canvas, Vector2 screenPosition) 
         {
