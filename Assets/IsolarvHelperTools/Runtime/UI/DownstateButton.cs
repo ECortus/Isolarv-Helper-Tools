@@ -5,6 +5,7 @@ namespace IsolarvHelperTools.Runtime.UI
 {
     public class DownstateButton : Button
     {
+        public UnityEvent onDown;
         public UnityEvent onHold;
         public UnityEvent onUp;
 
@@ -17,6 +18,7 @@ namespace IsolarvHelperTools.Runtime.UI
                 if (!isDown)
                 {
                     isDown = true;
+                    onDown?.Invoke();
                 }   
                 
                 WhilePressed();
