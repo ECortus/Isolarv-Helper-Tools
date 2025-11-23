@@ -51,5 +51,14 @@ namespace IsolarvHelperTools.Runtime
             
             return results.Count > 0;
         }
+
+        public static Vector3 ConvertScreenInputToWorldPosition(Vector2 screen)
+        {
+            var cam = Camera.main;
+            var vector3 = new Vector3(screen.x, screen.y, cam.nearClipPlane);
+            var worldPoint = cam.ScreenToWorldPoint(vector3);
+
+            return worldPoint;
+        }
     }
 }
