@@ -5,6 +5,12 @@ using UnityEngine;
 namespace IsolarvHelperTools.Runtime
 {
     [Serializable]
+    public enum EUpdateType
+    {
+        Delay, Yield, NextFrame, WaitForEndOfFrame
+    }
+    
+    [Serializable]
     public enum EDeltaType
     {
         Delta, Fixed, Manual
@@ -12,17 +18,19 @@ namespace IsolarvHelperTools.Runtime
     
     public abstract class AbstractCommonSystem : MonoBehaviour
     {
+        [SerializeField] private EUpdateType updateType = EUpdateType.Delay;
+        
+        [DrawIf("updateType", EUpdateType.Yield)]
+        [SerializeField] private PlayerLoopTiming yieldTiming = PlayerLoopTiming.Update;
+        
+        [DrawIf("updateType", EUpdateType.Delay)]
         [SerializeField] private EDeltaType deltaType = EDeltaType.Delta;
         
+        [DrawIf("updateType", EUpdateType.Delay)]
         [DrawIf("deltaType", EDeltaType.Manual)]
         [SerializeField] private float manualDelta = 0.1f;
         
-        [SerializeField] private bool enableTier = false;
-        
-        [DrawIf("enableTier", true)]
-        [SerializeField] private int tierMaxIterationPerFrame = 10;
-        
-        protected float DeltaTime
+        float DeltaTime
         {
             get
             {
@@ -53,37 +61,57 @@ namespace IsolarvHelperTools.Runtime
             StartSystem();
         }
         
-        protected virtual void StartSystem()
+        void StartSystem()
         {
+            OnStart();
+            
             AsyncTaskHelper.CreateTask(async () =>
             {
                 while (true)
                 {
-                    await UpdateSystem();
+                    float systemDelta = DeltaTime;
+                    
+                    await UpdateSystem(systemDelta);
+                    await AwaitTask(systemDelta);
                 }
             });
         }
 
-        protected abstract UniTask UpdateSystem();
-        
-        int componentTier = 0;
-
-        protected async UniTask UpdateTier()
+        protected virtual void OnStart()
         {
-            if (enableTier)
+            
+        }
+        
+        protected virtual void OnDestroy()
+        {
+            
+        }
+
+        async UniTask AwaitTask(float deltaTime)
+        {
+            if (updateType == EUpdateType.Delay)
             {
-                componentTier++;
-                if (componentTier % tierMaxIterationPerFrame == 0)
-                {
-                    componentTier = 0;
-                    await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate, cancellationToken: this.GetCancellationTokenOnDestroy());
-                }
+                int systemDeltaInMilliseconds = (int)(deltaTime * 1000);
+                await UniTask.Delay(systemDeltaInMilliseconds, cancellationToken: this.GetCancellationTokenOnDestroy());
+            }
+            else if (updateType == EUpdateType.Yield)
+            {
+                await UniTask.Yield(yieldTiming, cancellationToken: this.GetCancellationTokenOnDestroy());
+            }
+            else if (updateType == EUpdateType.NextFrame)
+            {
+                await UniTask.NextFrame(cancellationToken: this.GetCancellationTokenOnDestroy());
+            }
+            else if (updateType == EUpdateType.WaitForEndOfFrame)
+            {
+                await UniTask.WaitForEndOfFrame(cancellationToken: this.GetCancellationTokenOnDestroy());
+            }
+            else
+            {
+                throw new NotImplementedException();
             }
         }
 
-        protected void ResetTier()
-        {
-            componentTier = 0;
-        }
+        protected abstract UniTask UpdateSystem(float deltaTime);
     }
 }

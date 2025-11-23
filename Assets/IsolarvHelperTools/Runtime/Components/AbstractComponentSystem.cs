@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace IsolarvHelperTools.Runtime
 {
@@ -11,25 +12,30 @@ namespace IsolarvHelperTools.Runtime
     public abstract class AbstractComponentSystem<T> : AbstractCommonSystem 
         where T : ISystemComponent
     {
-        List<T> allElements;
+        [SerializeField] private bool enableTier = false;
         
-        void OnDestroy()
+        [DrawIf("enableTier", true)]
+        [SerializeField] private int tierMaxIterationPerFrame = 10;
+        
+        List<T> allElements;
+        int componentTier = 0;
+        
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+            
             if (allElements != null)
             {
                 allElements.Clear();
             }
         }
         
-        protected override async UniTask UpdateSystem()
+        protected override async UniTask UpdateSystem(float deltaTime)
         {
             allElements = GetUnitList();
 
             ResetTier();
-
-            float systemDelta = DeltaTime;
-            int systemDeltaInMilliseconds = (int)(systemDelta * 1000);
-                
+           
             for (int i = 0; i < allElements.Count; i++)
             {
                 var component = allElements[i];
@@ -38,17 +44,33 @@ namespace IsolarvHelperTools.Runtime
                     continue;
                 }
 
-                var result = UpdateFunction(component, systemDelta);
+                var result = UpdateFunction(component, deltaTime);
                 if (result)
                 {
                     await UpdateTier();
                 }
             }
-
-            await UniTask.Delay(systemDeltaInMilliseconds, cancellationToken: this.GetCancellationTokenOnDestroy());
         }
 
         protected abstract List<T> GetUnitList();
         protected abstract bool UpdateFunction(T unit, float delta);
+
+        async UniTask UpdateTier()
+        {
+            if (enableTier)
+            {
+                componentTier++;
+                if (componentTier % tierMaxIterationPerFrame == 0)
+                {
+                    componentTier = 0;
+                    await UniTask.Yield(PlayerLoopTiming.LastPostLateUpdate, cancellationToken: this.GetCancellationTokenOnDestroy());
+                }
+            }
+        }
+
+        void ResetTier()
+        {
+            componentTier = 0;
+        }
     }
 }
