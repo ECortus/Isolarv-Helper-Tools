@@ -1,4 +1,4 @@
-# Isolarv-Helper-Tools
+# Game-Dev-Utils
 
 Custom tools/scripts and etc. for easier work.
 
@@ -15,11 +15,11 @@ Insert dependencies packages into project `manifest.json`:
 After import package via UPM:
 
 ```
-https://github.com/ECortus/Isolarv-Helper-Tools.git?path=Assets/IsolarvHelperTools
+https://github.com/ECortus/Game-Dev-Utils.git?path=Assets/GameDevUtils
 ```
 
 or insert directly to `manifest.json`:
 
 ```
-"com.isolarv.helper-tools": "https://github.com/ECortus/Isolarv-Helper-Tools.git?path=Assets/IsolarvHelperTools",
+"com.isolarv.game-dev-utils": "https://github.com/ECortus/Game-Dev-Utils.git?path=Assets/GameDevUtils",
 ```
