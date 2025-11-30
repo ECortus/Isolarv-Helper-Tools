@@ -15,11 +15,11 @@ Insert dependencies packages into project `manifest.json`:
 After import package via UPM:
 
 ```
-https://github.com/ECortus/Game-Dev-Utils.git?path=Assets/GameDevUtils
+https://github.com/ECortus/Game-Dev-Utils.git?path=Assets/Plugins/GameDevUtils
 ```
 
 or insert directly to `manifest.json`:
 
 ```
-"com.isolarv.game-dev-utils": "https://github.com/ECortus/Game-Dev-Utils.git?path=Assets/GameDevUtils",
+"com.isolarv.game-dev-utils": "https://github.com/ECortus/Game-Dev-Utils.git?path=Assets/Plugins/GameDevUtils",
 ```
