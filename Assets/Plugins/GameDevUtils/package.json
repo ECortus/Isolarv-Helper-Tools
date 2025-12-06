@@ -10,7 +10,7 @@
 	},
 	"displayName": "Game Dev Utils",
 	"category": "Isolarv",
-	"description": "Custom tools/scripts and etc. for easier work.",
+	"description": "Different scripts for similar work in code.",
 	"license": "MIT",
 	"hideInEditor": false,
 	"dependencies": { }
