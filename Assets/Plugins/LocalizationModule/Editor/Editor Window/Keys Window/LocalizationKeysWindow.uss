@@ -1,0 +1,96 @@
+.c-add-language-button {
+    opacity: 1;
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    margin-top: 20px;
+    width: 200px;
+    height: 22px;
+    -unity-background-image-tint-color: rgb(0, 0, 0);
+    background-color: rgb(48, 120, 191);
+    margin-left: 20px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    top: 20px;
+}
+
+.c-add-language-box Button {
+    flex-grow: 1;
+    max-width: none;
+    width: auto;
+}
+
+.c-language-list-view {
+    top: auto;
+    left: auto;
+    width: 30%;
+    height: 155%;
+    align-content: stretch;
+    align-items: stretch;
+    align-self: stretch;
+    border-top-width: 40px;
+    justify-content: flex-start;
+    flex-basis: auto;
+    font-size: 18px;
+    -unity-text-align: middle-center;
+    text-overflow: clip;
+    white-space: normal;
+    -unity-font-style: bold;
+}
+
+.c-main-label {
+    -unity-font-style: bold;
+    -unity-text-align: lower-left;
+    font-size: 16px;
+    flex-shrink: 1;
+    flex-basis: auto;
+    bottom: -30px;
+    align-items: auto;
+    align-content: auto;
+    width: 130px;
+    height: 8px;
+    left: 15px;
+}
+
+.c-content-box {
+    background-color: rgb(51, 51, 51);
+    width: 70%;
+    align-self: flex-end;
+    height: 1080px;
+    align-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: absolute;
+    flex-basis: initial;
+    flex-shrink: 1;
+    top: -10px;
+    border-right-width: 0;
+    left: auto;
+}
+
+.c-new-collection-field {
+    align-self: stretch;
+    justify-content: flex-start;
+    align-content: auto;
+    align-items: center;
+    width: 240px;
+    -unity-text-align: upper-right;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    top: 40px;
+    -unity-font-style: bold;
+    left: -30px;
+    height: 25px;
+}
+
+.c-preview-name {
+    align-self: stretch;
+    top: 36px;
+    -unity-text-align: middle-left;
+    left: 25px;
+    width: 100%;
+    height: 45px;
+    -unity-font-style: bold;
+    font-size: 11.5px;
+}

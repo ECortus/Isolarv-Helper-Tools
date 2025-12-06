@@ -1,0 +1,17 @@
+  
+{
+	"name": "com.isolarv.custom-tools",
+	"version": "1.0.0",
+	"author":
+	{
+		"name" : "Isolarv",
+		"email" : "",
+		"url" : ""
+	},
+	"displayName": "Custom Tools",
+	"category": "Isolarv",
+	"description": "Custom tools/scripts and etc. for easier work.",
+	"license": "MIT",
+	"hideInEditor": false,
+	"dependencies": { }
+}

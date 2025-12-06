@@ -1,0 +1,17 @@
+  
+{
+	"name": "com.isolarv.game-save-kit",
+	"version": "1.0.0",
+	"author": 
+	{
+		"name" : "Isolarv",
+		"email" : "",
+		"url" : ""
+	},
+	"displayName": "Game Save Kit",
+	"category": "Isolarv",
+	"description": "Tool to save & load game on Unity.",
+	"license": "MIT",
+	"hideInEditor": false,
+	"dependencies": { }
+}

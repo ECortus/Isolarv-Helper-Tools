@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/IsolarvLocalizationTool/Editor/Editor%20Window/Tables%20Window/EditTableKeyItem.uss?fileID=7433441132597879392&amp;guid=89325c33f03059e4fa6f25092d4246c2&amp;type=3#EditTableKeyItem" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:GroupBox name="key-languages-box" class="c-translate-list">
+            <ui:VisualElement class="c-item" style="flex-grow: 1;">
+                <ui:Label text="Key:" class="c-sub-label" />
+                <ui:Label text="LOOOOOOOOOOOOOOOOONG LABEEEEEEEEEEEEEEEEEEEEL" name="key-label" class="c-label" />
+            </ui:VisualElement>
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

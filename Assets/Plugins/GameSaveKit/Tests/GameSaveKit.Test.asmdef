@@ -1,0 +1,16 @@
+{
+    "name": "GameSaveKit.Test",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0243450557c230842b6e35279441b8f6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

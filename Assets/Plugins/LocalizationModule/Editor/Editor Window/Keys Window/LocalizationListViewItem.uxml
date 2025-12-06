@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/IsolarvLocalizationTool/Editor/Editor%20Window/Keys%20Window/LocalizationListViewItem.uss?fileID=7433441132597879392&amp;guid=186ee922c5434394d963605cd8f4b401&amp;type=3#LocalizationListViewItem" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement class="list-view-item" style="flex-grow: 1;">
+            <ui:Label text="Hello World! From UXML" name="Localization-Label" class="list-view-item-label" />
+            <LocalizationModule.Editor.UxmlImage name="Localization-Image" class="list-view-item-image" style="top: 3px;" />
+            <ui:Button text="-" name="remove-button" class="c-remove-button" style="width: 25px; height: 25px; left: -160px; right: 0; top: -26px; font-size: 16px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

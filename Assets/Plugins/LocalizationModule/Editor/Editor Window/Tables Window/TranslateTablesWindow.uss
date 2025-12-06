@@ -1,0 +1,69 @@
+.c-main-label {
+    -unity-font-style: bold;
+    -unity-text-align: lower-left;
+    font-size: 16px;
+    flex-shrink: 1;
+    flex-basis: auto;
+    bottom: -30px;
+    align-items: auto;
+    align-content: auto;
+    width: 130px;
+    height: 8px;
+    left: 15px;
+}
+
+.c-sub-label {
+    -unity-font-style: bold;
+    -unity-text-align: lower-left;
+    font-size: 14px;
+    flex-shrink: 1;
+    flex-basis: auto;
+    bottom: auto;
+    align-items: flex-start;
+    align-content: auto;
+    width: 130px;
+    height: 8px;
+    left: auto;
+    align-self: flex-start;
+    border-left-width: 10px;
+    border-top-width: 55px;
+}
+
+.c-keys-field {
+    background-color: rgba(0, 0, 0, 0);
+    top: auto;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-self: stretch;
+    align-content: auto;
+    width: auto;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    bottom: auto;
+    font-size: 13px;
+    height: auto;
+}
+
+.c-table-view {
+    width: 98%;
+    align-self: center;
+    background-color: rgb(51, 51, 51);
+    justify-content: flex-start;
+    height: 98%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    top: 15px;
+    position: relative;
+    align-content: auto;
+    align-items: stretch;
+    flex-direction: column;
+    flex-basis: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    flex-shrink: 1;
+    flex-wrap: nowrap;
+}

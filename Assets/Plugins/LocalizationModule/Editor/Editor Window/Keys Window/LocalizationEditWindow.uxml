@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/IsolarvLocalizationTool/Editor/Editor%20Window/Keys%20Window/LocalizationEditWindow.uss?fileID=7433441132597879392&amp;guid=0baab2e966316484ca0e87cba7ce7e07&amp;type=3#LocalizationEditWindow" />
+    <ui:VisualElement style="flex-grow: 1; width: auto; left: auto;">
+        <ui:Label text="Edit selected keys collection" class="c-label" />
+        <ui:GroupBox class="c-content-box" style="background-color: rgb(46, 46, 46); flex-direction: column; flex-wrap: nowrap; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px;">
+            <ui:Label text="Localization keys list" class="c-content-label">
+                <ui:Button text="Add new key" name="add-new-key" style="align-self: flex-end; width: 150px;" />
+                <ui:Button text="Validate table" name="validate-table" enable-rich-text="false" class="c-remove-duplicates-button" style="width: 180px;" />
+                <ui:Button text="Remove duplicates" name="remove-duplicates" enable-rich-text="false" class="c-remove-duplicates-button" style="width: 180px;" />
+            </ui:Label>
+            <ui:ScrollView name="scroll-view" class="c-box-edit-view" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>

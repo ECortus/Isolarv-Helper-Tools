@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/IsolarvLocalizationTool/Editor/Editor%20Window/Tables%20Window/TranslateTablesWindow.uss?fileID=7433441132597879392&amp;guid=1e0813d1d25dc7c46a401f4c65005506&amp;type=3#TranslateTablesWindow" />
+    <ui:VisualElement>
+        <ui:VisualElement name="header" style="flex-grow: 1;">
+            <ui:Label text="Translate tables" enable-rich-text="true" name="main-label" class="main-label c-main-label" />
+            <ui:Label text="Select localization key collection:" name="sub-label" class="c-sub-label" />
+            <ui:GroupBox name="keys-field" class="c-keys-field" />
+        </ui:VisualElement>
+        <ui:VisualElement>
+            <ui:ScrollView name="table-view" mode="VerticalAndHorizontal" class="c-table-view" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

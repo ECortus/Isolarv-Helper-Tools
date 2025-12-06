@@ -1,0 +1,46 @@
+.list-view-item-label {
+    opacity: 1;
+    flex-direction: column;
+    font-size: 20px;
+    -unity-text-align: upper-left;
+    white-space: normal;
+    flex-basis: initial;
+    flex-shrink: 1;
+    flex-grow: 0;
+    text-overflow: clip;
+    align-items: auto;
+    right: -82px;
+    align-content: auto;
+    align-self: auto;
+    justify-content: flex-start;
+    bottom: -7px;
+}
+
+.list-view-item-image {
+    flex-basis: 27px;
+    flex-direction: column;
+    align-items: auto;
+    justify-content: flex-start;
+    align-self: auto;
+    align-content: auto;
+    top: -7px;
+    left: -45px;
+    position: relative;
+    -unity-text-align: upper-left;
+    height: auto;
+    flex-shrink: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.list-view-item {
+    height: 40px;
+    align-self: auto;
+    align-content: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    left: auto;
+    width: 200px;
+}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b784a7ae85914e2b98b7dabdc845c55e, type: 3}
+  m_Name: Language Key Collection
+  m_EditorClassIdentifier: 
+  keys:
+  - id: 0
+    name: "\u0423\u043A\u0440\u0430\u0457\u043D\u0441\u044C\u043A\u0430"
+    icon: {fileID: 21300000, guid: 2296ed772afbfa04fb37ed0e21feb503, type: 3}
+  - id: 1
+    name: English
+    icon: {fileID: 21300000, guid: d65105b7cbc4cbf42a227d00a1e6656b, type: 3}

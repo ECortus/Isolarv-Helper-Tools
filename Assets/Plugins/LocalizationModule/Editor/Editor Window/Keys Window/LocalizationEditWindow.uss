@@ -1,0 +1,59 @@
+.c-label {
+    align-self: flex-start;
+    font-size: 24px;
+    align-items: auto;
+    justify-content: flex-start;
+    align-content: flex-start;
+    width: auto;
+    -unity-font-style: bold;
+    left: 20px;
+    top: 20px;
+}
+
+.c-content-box {
+    width: 95%;
+    right: auto;
+    left: auto;
+    margin-left: 0;
+    margin-right: 0;
+    align-items: stretch;
+    align-self: center;
+    top: 50px;
+    height: 500px;
+    opacity: 1;
+    flex-wrap: nowrap;
+}
+
+.c-content-label {
+    font-size: 16px;
+    -unity-font-style: bold;
+    left: 5px;
+}
+
+.c-add-new-language-button {
+    align-self: flex-start;
+    width: 50%;
+    top: 10px;
+}
+
+.c-remove-button {
+    align-self: flex-end;
+    width: 35%;
+}
+
+.c-box-edit-view {
+    height: 90%;
+    border-top-width: 0;
+    top: 15px;
+    width: 95%;
+    align-self: center;
+    background-color: rgba(255, 0, 0, 0);
+    font-size: 14px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+}
+
+.c-remove-duplicates-button {
+    align-self: flex-end;
+    width: 150px;
+}

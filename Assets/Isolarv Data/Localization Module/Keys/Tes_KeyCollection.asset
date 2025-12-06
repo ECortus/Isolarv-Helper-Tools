@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91028bb71cf84bfda29b26b5cd57fcd0, type: 3}
+  m_Name: Tes_KeyCollection
+  m_EditorClassIdentifier: 
+  keys:
+  - type: 0
+    defaultKey: NEW-KEY
+  relatedTable: {fileID: 11400000, guid: 9fb0262d8c6312c4c9b9a8a7bbf46f31, type: 2}
