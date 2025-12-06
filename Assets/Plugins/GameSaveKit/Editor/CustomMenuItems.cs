@@ -7,13 +7,7 @@ namespace GameSaveKit.Editor
 {
     internal static class CustomMenuItems
     {
-        [MenuItem("Tools/Isolarv/Save-Load Tool/Settings", false, 10)]
-        public static void ShowWindow()
-        {
-            EditorWindowUtils.ShowWindow<SaveLoadSettingsWindow>("Save & Load Settings");
-        }
-        
-        [MenuItem("Tools/Isolarv/Save-Load Tool/Instantiate supervisor", false, 5)]
+        [MenuItem("Tools/Isolarv/Game Save Kit/Instantiate supervisor", false, 10)]
         public static void InstantiateSaveableSupervisor()
         {
             if (GameObject.FindAnyObjectByType(typeof(SaveableSupervisor)))
@@ -27,6 +21,12 @@ namespace GameSaveKit.Editor
             var prefabObject = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             
             PrefabUtility.InstantiatePrefab(prefabObject);
+        }
+        
+        [MenuItem("Tools/Isolarv/Game Save Kit/Settings", false, 15)]
+        public static void ShowWindow()
+        {
+            EditorWindowUtils.ShowWindow<SaveLoadSettingsWindow>("Save & Load Settings");
         }
     }
 }

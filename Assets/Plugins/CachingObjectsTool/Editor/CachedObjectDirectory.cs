@@ -20,7 +20,7 @@ namespace CachingObjectsTool.Editor
                     _instance = Resources.Load<CachedObjectDirectory>("Cached Objects/Cached Objects Directory");
 
                 if (!_instance)
-                    Debug.LogError("[Cached Object Tool] Non directory in Resources. Please, initialize new directory.");
+                    Debug.LogError("[Caching Objects Tool] Non directory in Resources. Please, initialize new directory.");
                 
                 return _instance;
             }

@@ -19,23 +19,6 @@ namespace LocalizationModule.Editor
         private VisualTreeAsset _listViewItemTemplate;
 
         private List<LanguageKey> _keysSet;
-        
-        [MenuItem("Tools/Isolarv/Localization Tool/All windows", false, 25)]
-        public static void ShowAllWindows()
-        {
-            ShowWindow();
-            
-            LocalizationKeysWindow.OpenWindow(typeof(LanguageKeysWindow));
-            TranslateTablesWindow.OpenWindow(typeof(LanguageKeysWindow));
-            
-            EditorWindowUtils.FocusWindow<LanguageKeysWindow>("Languages");
-        }
-        
-        [MenuItem("Tools/Isolarv/Localization Tool/Languages", false, 55)]
-        public static void ShowWindow()
-        {
-            EditorWindowUtils.ShowWindow<LanguageKeysWindow>("Languages");
-        }
 
         public static void OpenWindow(params Type[] desiredDockNextTo)
         {

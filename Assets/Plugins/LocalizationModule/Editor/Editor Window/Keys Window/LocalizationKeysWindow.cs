@@ -21,12 +21,6 @@ namespace LocalizationModule.Editor
         private List<LocalizationKeyCollection> _keysSet;
 
         public event Action OnUpdate;
-        
-        [MenuItem("Tools/Isolarv/Localization Tool/Keys", false, 60)]
-        public static void ShowWindow()
-        {
-            EditorWindowUtils.ShowWindow<LocalizationKeysWindow>("Keys");
-        }
 
         public static void OpenWindow(params Type[] desiredDockNextTo)
         {

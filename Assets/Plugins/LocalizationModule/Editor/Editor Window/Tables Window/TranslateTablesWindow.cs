@@ -14,12 +14,6 @@ namespace LocalizationModule.Editor
 
         ScrollView _tableView;
         
-        [MenuItem("Tools/Isolarv/Localization Tool/Tables", false, 65)]
-        public static void ShowWindow()
-        {
-            EditorWindowUtils.ShowWindow<TranslateTablesWindow>("Tables");
-        }
-        
         public static void OpenWindow(params Type[] desiredDockNextTo)
         {
             EditorWindowUtils.OpenWindow<TranslateTablesWindow>("Tables", desiredDockNextTo);

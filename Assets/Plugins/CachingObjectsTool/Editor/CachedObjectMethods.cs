@@ -9,7 +9,7 @@ namespace CachingObjectsTool.Editor
 {
     internal static class CachedObjectMethods
     {
-        [MenuItem("Tools/Isolarv/Cached & Override/Initialize Cache Directory", false, 115)]
+        [MenuItem("Tools/Isolarv/Caching Objects/Initialize Cache Directory", false, 10)]
         public static void InitializeCacheDirectory()
         {
             var folder = EditorPaths.CACHED_OBJECTS_PATH;
@@ -28,7 +28,7 @@ namespace CachingObjectsTool.Editor
 
             if (AssetDatabase.LoadAssetAtPath<CachedObjectDirectory>(path) != null)
             {
-                Debug.Log($"[Isolarv Cached Object Tool] Cached Object Directory already exists in Resources at path {path}");
+                Debug.Log($"[Caching Objects Tool] Cached Object Directory already exists in Resources at path {path}");
                 return;
             }
             
@@ -38,7 +38,7 @@ namespace CachingObjectsTool.Editor
             AssetDatabase.Refresh();
         }
 
-        [MenuItem("Tools/Isolarv/Cached & Override/Clear Unused Cache", false, 120)]
+        [MenuItem("Tools/Isolarv/Caching Objects/Clear Unused Cache", false, 15)]
         public static void ClearUnusedCache()
         {
             var cachedValid = new List<CachedObjectDirectory.CachedObject>();
@@ -107,7 +107,7 @@ namespace CachingObjectsTool.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             
-            Debug.Log($"[Isolarv Cached Object Tool] Clear Unused Cache completed.");
+            Debug.Log($"[Caching Objects Tool] Clear Unused Cache completed.");
         }
     }
 }

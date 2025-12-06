@@ -7,11 +7,40 @@ namespace LocalizationModule.Editor
 {
     internal static class LocalizationToolsCommand
     {
-        [MenuItem("Tools/Isolarv/Localization Tool/Validate all tables", false, 115)]
+        [MenuItem("Tools/Isolarv/Localization Module/Validate all tables", false, 2)]
         public static async void ValidateAllTables()
         {
             await ValidateByTables();
             await ValidateByKeys();
+        }
+        
+        [MenuItem("Tools/Isolarv/Localization Module/All windows", false, 15)]
+        public static void ShowAllWindows()
+        {
+            ShowLanguageWindow();
+            
+            LocalizationKeysWindow.OpenWindow(typeof(LanguageKeysWindow));
+            TranslateTablesWindow.OpenWindow(typeof(LanguageKeysWindow));
+            
+            EditorWindowUtils.FocusWindow<LanguageKeysWindow>("Languages");
+        }
+        
+        [MenuItem("Tools/Isolarv/Localization Module/Languages", false, 16)]
+        public static void ShowLanguageWindow()
+        {
+            EditorWindowUtils.ShowWindow<LanguageKeysWindow>("Languages");
+        }
+        
+        [MenuItem("Tools/Isolarv/Localization Module/Keys", false, 16)]
+        public static void ShowKeysWindow()
+        {
+            EditorWindowUtils.ShowWindow<LocalizationKeysWindow>("Keys");
+        }
+        
+        [MenuItem("Tools/Isolarv/Localization Module/Tables", false, 16)]
+        public static void ShowTablesWindow()
+        {
+            EditorWindowUtils.ShowWindow<TranslateTablesWindow>("Tables");
         }
 
         static async UniTask ValidateByKeys()
