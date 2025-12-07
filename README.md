@@ -9,15 +9,14 @@ Install dependencies packages by insert rows into project `manifest.json`:
 ```
 "com.unity.addressables" : "2.7.4",
 "com.unity.addressables.android" : "1.0.7",
-"com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
-"com.yasirkula.ingamedebugconsole": "https://github.com/yasirkula/UnityIngameDebugConsole.git",
 ```
 
-Dependencies in `.unitypackage`:
+Dependencies included in project:
 
-`Extenject.unitypackage` ([original](https://github.com/modesttree/Zenject))
 ```
-https://github.com/modesttree/Zenject/releases/download/9.2.0/Extenject.unitypackage
+Extenject: https://github.com/modesttree/Zenject.git,
+UniTask: https://github.com/Cysharp/UniTask.git,
+In-game Debug Console: https://github.com/yasirkula/UnityIngameDebugConsole.git
 ```
 
 ## To install
