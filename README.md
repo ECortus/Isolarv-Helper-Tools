@@ -15,7 +15,7 @@ Install dependencies packages by insert rows into project `manifest.json`:
 
 Dependencies in `.unitypackage`:
 
-`Extenject.unitypackage` w/o OptionalExtras folder ([original](https://github.com/modesttree/Zenject))
+`Extenject.unitypackage` ([original](https://github.com/modesttree/Zenject))
 ```
 https://github.com/modesttree/Zenject/releases/download/9.2.0/Extenject.unitypackage
 ```
