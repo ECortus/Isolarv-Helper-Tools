@@ -28,7 +28,7 @@ namespace GameDevUtils.Runtime
             return results.Count > 0;
         }
 #elif ENABLE_INPUT_SYSTEM
-        public static bool IsPointerOverUIObject(Vector2 position) 
+        public static bool IsPointerOverUIObject(this Camera cam, Vector2 position) 
         {
             PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
             eventDataCurrentPosition.position = position;
@@ -38,9 +38,8 @@ namespace GameDevUtils.Runtime
             
             return results.Count > 0;
         }
-#endif
-
-        public static bool IsPointerOverUIObject(Canvas canvas, Vector2 screenPosition) 
+#else
+        public static bool IsPointerOverUIObject(this Camera cam, Canvas canvas, Vector2 screenPosition) 
         {
             PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
             eventDataCurrentPosition.position = screenPosition;
@@ -51,14 +50,20 @@ namespace GameDevUtils.Runtime
             
             return results.Count > 0;
         }
+#endif
 
-        public static Vector3 ConvertScreenInputToWorldPosition(Vector2 screen)
+        public static bool ConvertScreenInputToWorldPosition(this Camera cam, Vector2 screen, string[] layers, out Vector3 hitPoint)
         {
-            var cam = Camera.main;
-            var vector3 = new Vector3(screen.x, screen.y, cam.nearClipPlane);
-            var worldPoint = cam.ScreenToWorldPoint(vector3);
-
-            return worldPoint;
+            var ray = cam.ScreenPointToRay(screen);
+            
+            if (Physics.Raycast(ray, out RaycastHit hit, 99999f, LayerMask.GetMask(layers)))
+            {
+                hitPoint = hit.point;
+                return true;
+            }
+            
+            hitPoint = Vector3.zero;
+            return false;
         }
     }
 }
