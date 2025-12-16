@@ -11,10 +11,10 @@ namespace GameDevUtils.Runtime.UI
         [Space(5)]
         [SerializeField] private CanvasGroup root;
         [SerializeField] private Button foldoutRootButton;
-        
+
         bool isRootOpened = false;
         
-        private void Start()
+        void Start()
         {
             SetupFoldoutButtons();
 
@@ -41,13 +41,17 @@ namespace GameDevUtils.Runtime.UI
 
         void Open()
         {
+            root.gameObject.SetActive(true);
             root.alpha = 1f;
+            
             isRootOpened = true;
         }
 
         void Close()
         {
             root.alpha = 0f;
+            root.gameObject.SetActive(false);
+            
             isRootOpened = false;
         }
     }
