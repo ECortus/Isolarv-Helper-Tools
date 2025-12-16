@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: IsolarvHelperTools.UI::IsolarvHelperTools.Source.UI.FoldoutButtonUI
   startOpen: 1
-  content: {fileID: 0}
+  content: {fileID: 7045117687260021421}
   foldoutButton: {fileID: 8528159803231150310}
   foldoutButtonText: {fileID: 8167875336241776334}
 --- !u!1 &1123512874235726632
@@ -2089,6 +2089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5491698450721026151}
+  updateMethod: 2
+  invokeDelay: 0.3
 --- !u!1 &7049996788555109679
 GameObject:
   m_ObjectHideFlags: 0

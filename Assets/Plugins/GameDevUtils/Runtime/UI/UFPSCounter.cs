@@ -1,16 +1,22 @@
-﻿using TMPro;
+﻿using System;
+using GameDevUtils.Runtime.UI.Abstract;
+using TMPro;
 using UnityEngine;
 
 namespace GameDevUtils.Runtime.UI
 {
-    public class UFPSCounter : MonoBehaviour
+    public class UFPSCounter : UDynamicTextField
     {
-        [SerializeField] private TextMeshProUGUI text;
-
-        void Update()
+        protected override string GetText()
         {
-            var fps = 1.0f / Time.deltaTime;
-            text.text = $"fps: {Mathf.Ceil(fps)}";
+            var fpsFloat = 1.0f / Time.deltaTime;
+            var fpsRounded = Math.Round(fpsFloat, 1);
+            
+            string fpsString = $"{fpsRounded}";
+            if (fpsRounded == Math.Round(fpsFloat, 0))
+                fpsString += ".0";
+            
+            return $"fps: {fpsString}";
         }
     }
 }
