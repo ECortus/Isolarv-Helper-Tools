@@ -11,7 +11,7 @@ namespace GameDevUtils.Runtime.UI.Abstract
         
         enum EUpdateMethod
         {
-            Update, FixedUpdate, InvokeRepeating
+            None, Update, FixedUpdate, InvokeRepeating
         }
         
         [SerializeField] private TMP_Text text;
@@ -23,6 +23,17 @@ namespace GameDevUtils.Runtime.UI.Abstract
         private float invokeDelay = 1f;
 
         private void Start()
+        {
+            OnStart();
+            TryStartAsync();
+        }
+
+        protected virtual void OnStart()
+        {
+            
+        }
+
+        void TryStartAsync()
         {
             if (updateMethod != EUpdateMethod.InvokeRepeating)
                 return;
