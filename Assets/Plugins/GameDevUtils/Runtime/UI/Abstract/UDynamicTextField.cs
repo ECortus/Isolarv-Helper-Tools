@@ -21,16 +21,11 @@ namespace GameDevUtils.Runtime.UI.Abstract
         
         [SerializeField, DrawIf("updateMethod", EUpdateMethod.InvokeRepeating), Range(0.05f, 2f)] 
         private float invokeDelay = 1f;
-
+        
         private void Start()
         {
             OnStart();
             TryStartAsync();
-        }
-
-        protected virtual void OnStart()
-        {
-            
         }
 
         void TryStartAsync()
@@ -43,7 +38,7 @@ namespace GameDevUtils.Runtime.UI.Abstract
                 while (true)
                 {
                     await UniTask.Delay((int)(invokeDelay * 1000));
-                    SetText();
+                    UpdateText();
                 }
             });
         }
@@ -53,7 +48,7 @@ namespace GameDevUtils.Runtime.UI.Abstract
             if (updateMethod != EUpdateMethod.Update)
                 return;
             
-            SetText();
+            UpdateText();
         }
         
         void FixedUpdate()
@@ -61,10 +56,15 @@ namespace GameDevUtils.Runtime.UI.Abstract
             if (updateMethod != EUpdateMethod.FixedUpdate)
                 return;
             
-            SetText();
+            UpdateText();
+        }
+        
+        protected virtual void OnStart()
+        {
+            
         }
 
-        void SetText()
+        protected void UpdateText()
         {
             text.text = GetText();
         }
