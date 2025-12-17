@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameDevUtils.Runtime;
 using GameSaveKit.Runtime.Prefs;
 using GameSaveKit.Runtime.Settings;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace GameSaveKit.Runtime.Saveable
         private void Awake()
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            ObjectHelper.DontDestroyOnLoad(this.gameObject);
         }
         
         private void OnDestroy()

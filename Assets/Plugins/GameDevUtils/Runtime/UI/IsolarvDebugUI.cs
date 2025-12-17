@@ -23,7 +23,7 @@ namespace GameDevUtils.Runtime.UI
             else
                 Close();
             
-            GameObject.DontDestroyOnLoad(this.gameObject);
+            ObjectHelper.DontDestroyOnLoad(this.gameObject);
         }
 
         void SetupFoldoutButtons()

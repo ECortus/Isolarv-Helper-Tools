@@ -4,6 +4,14 @@ namespace GameDevUtils.Runtime
 {
     public static class ObjectHelper
     {
+        public static void DontDestroyOnLoad(GameObject obj)
+        {
+            DebugHelper.Log("DontDestroyOnLoad object: " + obj);
+
+            obj.transform.parent = null;
+            GameObject.DontDestroyOnLoad(obj);
+        }
+        
         public static void Destroy(Object obj)
         {
             DebugHelper.Log("Destroying object: " + obj);
@@ -21,7 +29,5 @@ namespace GameDevUtils.Runtime
             DebugHelper.Log("Immediate destroying object: " + obj);
             GameObject.DestroyImmediate(obj);
         }
-        
-        
     }
 }
