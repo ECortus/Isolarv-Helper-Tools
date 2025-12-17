@@ -26,6 +26,8 @@ namespace GameDevUtils.Runtime.UI.Abstract
         {
             OnStart();
             TryStartAsync();
+            
+            UpdateText();
         }
 
         void TryStartAsync()
