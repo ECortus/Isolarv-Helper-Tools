@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace GameDevUtils.Runtime.UI.Abstract
@@ -7,10 +8,12 @@ namespace GameDevUtils.Runtime.UI.Abstract
     {
         [Space(5)]
         [SerializeField] private Slider slider;
+        [SerializeField] private TMP_Text label;
 
         protected override void UpdateField()
         {
             UpdateSlider();
+            UpdateLabel();
         }
         
         protected abstract float GetSliderValue();
@@ -18,6 +21,13 @@ namespace GameDevUtils.Runtime.UI.Abstract
         void UpdateSlider()
         {
             slider.value = GetSliderValue();
+        }
+        
+        protected virtual string GetLabelText() { return ""; }
+        
+        void UpdateLabel()
+        {
+            label.text = GetLabelText();
         }
     }
 }
