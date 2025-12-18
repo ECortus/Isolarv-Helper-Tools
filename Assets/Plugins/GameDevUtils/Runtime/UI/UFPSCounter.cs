@@ -9,7 +9,8 @@ namespace GameDevUtils.Runtime.UI
     {
         protected override string GetText()
         {
-            var fpsFloat = 1.0f / Time.deltaTime;
+            var fpsFloat = 1.0f / Time.unscaledDeltaTime;
+            
             var fpsRounded = Math.Round(fpsFloat, 1);
             
             string fpsString = $"{fpsRounded}";
