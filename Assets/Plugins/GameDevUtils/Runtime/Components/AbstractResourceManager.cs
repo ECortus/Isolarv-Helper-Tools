@@ -44,7 +44,7 @@ namespace GameDevUtils.Runtime
             return Resource;
         }
         
-        public float GetValueInt()
+        public int GetValueInt()
         {
             return (int)Resource;
         }
