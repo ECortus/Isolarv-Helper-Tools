@@ -6,6 +6,8 @@ namespace GameDevUtils.Runtime.UI
 {
     public class IsolarvDebugUI : MonoBehaviour
     {
+        static IsolarvDebugUI instance { get; set; }
+        
         [SerializeField] private bool startOpen = false;
         
         [Space(5)]
@@ -13,7 +15,21 @@ namespace GameDevUtils.Runtime.UI
         [SerializeField] private Button foldoutRootButton;
 
         bool isRootOpened = false;
-        
+
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                DebugHelper.LogWarning("IsolarvDebugUI already exist on scene.");
+                
+                ObjectHelper.Destroy(gameObject);
+                return;
+            }
+            
+            instance = this;
+            ObjectHelper.DontDestroyOnLoad(this.gameObject);
+        }
+
         void Start()
         {
             SetupFoldoutButtons();
@@ -22,8 +38,6 @@ namespace GameDevUtils.Runtime.UI
                 Open();
             else
                 Close();
-            
-            ObjectHelper.DontDestroyOnLoad(this.gameObject);
         }
 
         void SetupFoldoutButtons()

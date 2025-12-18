@@ -17,6 +17,14 @@ namespace GameSaveKit.Runtime.Saveable
         
         private void Awake()
         {
+            if (instance != null)
+            {
+                Debug.LogWarning("[Save-Load Tool] SaveableSupervisor already exist on scene.");
+                
+                ObjectHelper.Destroy(this.gameObject);
+                return;
+            }
+            
             instance = this;
             ObjectHelper.DontDestroyOnLoad(this.gameObject);
         }
