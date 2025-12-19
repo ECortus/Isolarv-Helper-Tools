@@ -32,7 +32,7 @@ namespace GameSaveKit.Editor
                     .Remove(0, 1);
                 
                 //TODO: adapt script path to work with Packages
-                scriptPath = scriptPath.Replace("Libraty/PackageCache", "Packages");
+                scriptPath = scriptPath.Replace("Library/PackageCache", "Packages");
                 
                 var indexOfAtSign = scriptPath.IndexOf("@", StringComparison.Ordinal);
                 if (indexOfAtSign != -1)
