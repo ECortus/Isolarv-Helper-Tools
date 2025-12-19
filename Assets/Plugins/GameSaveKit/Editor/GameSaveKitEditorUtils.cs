@@ -29,6 +29,8 @@ namespace GameSaveKit.Editor
                     .Replace("GameSaveKitEditorUtils.cs", "")
                     .Replace("/Editor/", "")
                     .Remove(0, 1);
+                
+                Debug.Log(scriptPath);
 
                 packageBasePath = scriptPath;
                 return packageBasePath;
