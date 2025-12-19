@@ -1,11 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/IsolarvLocalizationTool/Editor/Editor%20Window/Language%20Window/AddNewLanguageWindow.uss?fileID=7433441132597879392&amp;guid=81f0d59889c17dd49bb297b4bdad321e&amp;type=3#AddNewLanguageWindow" />
+    <Style src="project://database/Assets/Plugins/LocalizationModule/Editor/Editor%20Window/Language%20Window/AddNewLanguageWindow.uss?fileID=7433441132597879392&amp;guid=81f0d59889c17dd49bb297b4bdad321e&amp;type=3#AddNewLanguageWindow"/>
     <ui:VisualElement style="flex-grow: 1; width: auto; left: auto;">
-        <ui:Label text="Add new language" class="c-label" />
+        <ui:Label text="Add new language" class="c-label"/>
         <ui:GroupBox class="c-content-box" style="background-color: rgb(46, 46, 46); flex-direction: column; flex-wrap: nowrap; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px;">
-            <ui:Label text="Enter language data" class="c-content-label" />
-            <ui:GroupBox name="fields-box" class="c-field-box c-fields-box" />
-            <ui:Button text="Add language to list" name="add-language-button" class="c-add-new-language-button" style="width: 250px; -unity-font-style: bold;" />
+            <ui:Label text="Enter language data" class="c-content-label"/>
+            <ui:GroupBox name="fields-box" class="c-field-box c-fields-box"/>
+            <ui:Button text="Add language to list" name="add-language-button" class="c-add-new-language-button" style="width: 250px; -unity-font-style: bold;"/>
         </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>

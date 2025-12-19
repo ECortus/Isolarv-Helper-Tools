@@ -1,48 +1,23 @@
 ﻿using System;
 using System.IO;
+using GameDevUtils.Editor;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace GameSaveKit.Editor
 {
-    internal static class GameSaveKitEditorUtils
+    internal static class GameSaveEditorUtils
     {
         static string packageBasePath;
-        public static string PACKAGE_BASE_PATH
+        static string PACKAGE_BASE_PATH
         {
             get
             {
                 if (!string.IsNullOrEmpty(packageBasePath))
                     return packageBasePath;
-
-                var dataPath = Application.dataPath
-                    .Replace("/Assets", "");
-
-                string[] res = System.IO.Directory.GetFiles(dataPath, "GameSaveKitEditorUtils.cs", SearchOption.AllDirectories);
                 
-                if (res.Length == 0)
-                    throw new Exception("GameSaveKitEditorUtils.cs not found");
-
-                //TODO: adapt script path to work with Assets
-                var scriptPath = res[0].Replace(dataPath, "")
-                    .Replace("\\", "/")
-                    .Replace("GameSaveKitEditorUtils.cs", "")
-                    .Replace("/Editor/", "")
-                    .Remove(0, 1);
-                
-                //TODO: adapt script path to work with Packages
-                scriptPath = scriptPath.Replace("Library/PackageCache", "Packages");
-                
-                var indexOfAtSign = scriptPath.IndexOf("@", StringComparison.Ordinal);
-                if (indexOfAtSign != -1)
-                {
-                    scriptPath = scriptPath.Remove(indexOfAtSign, 13);
-                }
-                
-                Debug.Log(scriptPath);
-
-                packageBasePath = scriptPath;
+                packageBasePath = EditorHelper.GetBasePathOfScript("GameSaveEditorUtils");
                 return packageBasePath;
             }
         }

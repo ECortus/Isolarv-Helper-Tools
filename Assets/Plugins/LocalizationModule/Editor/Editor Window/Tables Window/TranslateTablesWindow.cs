@@ -25,7 +25,7 @@ namespace LocalizationModule.Editor
 
             var visualTree =
                 AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                    $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/TranslateTablesWindow.uxml");
+                    $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/TranslateTablesWindow.uxml");
             
             VisualElement labelFromUxml = visualTree.Instantiate();
             root.Add(labelFromUxml);
@@ -75,7 +75,7 @@ namespace LocalizationModule.Editor
             }
             
             var emptyTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/TableEmptyItem.uxml");
+                $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/TableEmptyItem.uxml");
 
             string emptyLabel = "";
             bool isEmpty = false;

@@ -11,7 +11,7 @@ namespace GameSaveKit.Editor.CustomWindows
         public static T OpenWindow<T>(string label, params Type[] desiredDockNextTo) where T : EditorWindow
         {
             T wnd = UnityEditor.EditorWindow.GetWindow<T>(label, desiredDockNextTo);
-            wnd.titleContent = GameSaveKitEditorUtils.GetWindowTitle(label);
+            wnd.titleContent = GameSaveEditorUtils.GetWindowTitle(label);
             
             var size = new Vector2(800, 600);
             wnd.minSize = size;

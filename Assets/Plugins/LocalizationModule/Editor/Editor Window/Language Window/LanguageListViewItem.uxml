@@ -1,9 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/IsolarvLocalizationTool/Editor/Editor%20Window/Language%20Window/LanguageListViewItem.uss?fileID=7433441132597879392&amp;guid=261d7767d08063c43a8c1e1298b5dbff&amp;type=3#LanguageListViewItem" />
+    <Style src="project://database/Assets/Plugins/LocalizationModule/Editor/Editor%20Window/Language%20Window/LanguageListViewItem.uss?fileID=7433441132597879392&amp;guid=261d7767d08063c43a8c1e1298b5dbff&amp;type=3#LanguageListViewItem"/>
     <ui:VisualElement style="flex-grow: 1;">
         <ui:VisualElement class="list-view-item" style="flex-grow: 1;">
-            <ui:Label text="Hello World! From UXML" name="Language-Label" class="list-view-item-label" />
-            <LocalizationModule.Editor.UxmlImage name="Language-Image" class="list-view-item-image" />
+            <ui:Label text="Hello World! From UXML" name="Language-Label" class="list-view-item-label"/>
+            <LocalizationModule.Editor.UxmlImage name="Language-Image" class="list-view-item-image"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

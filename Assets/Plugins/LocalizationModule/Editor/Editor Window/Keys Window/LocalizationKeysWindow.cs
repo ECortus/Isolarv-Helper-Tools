@@ -35,7 +35,7 @@ namespace LocalizationModule.Editor
             
             var visualTree =
                 AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                    $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationKeysWindow.uxml");
+                    $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationKeysWindow.uxml");
 
             VisualElement labelFromUxml = visualTree.Instantiate();
             root.Add(labelFromUxml);
@@ -62,7 +62,7 @@ namespace LocalizationModule.Editor
 
         void TryLoadCollection()
         {
-            _localizationKeyCollections = EditorUtils.LoadAllAssetsInFolder<LocalizationKeyCollection>(EditorUtils.KEYS_PATH).ToList();
+            _localizationKeyCollections = LocalizationEditorUtils.LoadAllAssetsInFolder<LocalizationKeyCollection>(LocalizationEditorUtils.KEYS_PATH).ToList();
         }
 
         void UpdateOnCollectionChange()
@@ -121,8 +121,8 @@ namespace LocalizationModule.Editor
             var newCollection = ScriptableObject.CreateInstance<LocalizationKeyCollection>();
             newCollection.name = _newCollectionName;
 
-            var assetPath = $"{EditorUtils.KEYS_PATH}/{_newCollectionName}.asset";
-            EditorUtils.CreateAsset(newCollection, assetPath);
+            var assetPath = $"{LocalizationEditorUtils.KEYS_PATH}/{_newCollectionName}.asset";
+            LocalizationEditorUtils.CreateAsset(newCollection, assetPath);
 
             _newCollectionNameField.value = "";
             UpdateKeysSet();
@@ -133,7 +133,7 @@ namespace LocalizationModule.Editor
             _localizationListView = rootVisualElement.Q<ListView>("localization-list-view");
             
             _listViewItemTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationListViewItem.uxml");
+                $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationListViewItem.uxml");
             
             _localizationListView.itemsSource = _keysSet;
             _localizationListView.selectionType = SelectionType.Single;
@@ -190,14 +190,14 @@ namespace LocalizationModule.Editor
             var nameLabel = mainAbilityBox.Q<Label>("Localization-Label");
             nameLabel.text = key.name;
 
-            var icon = AssetDatabase.LoadAssetAtPath<Sprite>($"{EditorUtils.PACKAGE_BASE_PATH}/Sprites/scriptable_icon.png");
+            var icon = AssetDatabase.LoadAssetAtPath<Sprite>($"{LocalizationEditorUtils.PACKAGE_BASE_PATH}/Sprites/scriptable_icon.png");
             var abilityImage =  mainAbilityBox.Q<UxmlImage>("Localization-Image");
             abilityImage.image = icon.texture;
             
             var removeButton = mainAbilityBox.Q<Button>("remove-button");
             removeButton.clicked += () =>
             {
-                AssetDatabase.DeleteAsset($"{EditorUtils.KEYS_PATH}/{key.name}.asset");
+                AssetDatabase.DeleteAsset($"{LocalizationEditorUtils.KEYS_PATH}/{key.name}.asset");
                 UpdateKeysSet();
             };
         }

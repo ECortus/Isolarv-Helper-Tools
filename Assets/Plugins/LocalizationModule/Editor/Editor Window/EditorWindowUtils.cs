@@ -12,7 +12,7 @@ namespace LocalizationModule.Editor
         public static T OpenWindow<T>(string label, params Type[] desiredDockNextTo) where T : EditorWindow
         {
             T wnd = UnityEditor.EditorWindow.GetWindow<T>(label, desiredDockNextTo);
-            wnd.titleContent = EditorUtils.GetWindowTitle(label);
+            wnd.titleContent = LocalizationEditorUtils.GetWindowTitle(label);
             
             var size = new Vector2(800, 600);
             wnd.minSize = size;
@@ -46,7 +46,7 @@ namespace LocalizationModule.Editor
         public static LanguageKeyCollection GetLanguages()
         {
             return AssetDatabase.LoadAssetAtPath<LanguageKeyCollection>(
-                $"{EditorUtils.PACKAGE_BASE_PATH}/Data/Language Key Collection.asset");
+                $"{LocalizationEditorUtils.PACKAGE_BASE_PATH}/Data/Language Key Collection.asset");
         }
         
         public static void ValidateTable(TranslateTable table)

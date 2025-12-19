@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using GameDevUtils.Editor;
 using LocalizationModule.Runtime;
 using UnityEditor;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace LocalizationModule.Editor
 {
-    internal static class EditorUtils
+    internal static class LocalizationEditorUtils
     {
         static string packageBasePath;
         public static string PACKAGE_BASE_PATH
@@ -16,20 +17,8 @@ namespace LocalizationModule.Editor
             {
                 if (!string.IsNullOrEmpty(packageBasePath))
                     return packageBasePath;
-
-                string[] res = System.IO.Directory.GetFiles(Application.dataPath, "PackageSettings.cs", SearchOption.AllDirectories);
-                if (res.Length == 0)
-                {
-                    packageBasePath = "Packages/com.isolarv.localization-tool";
-                    return packageBasePath;
-                }
-
-                var scriptPath = res[0].Replace(Application.dataPath, "Assets")
-                    .Replace("PackageSettings.cs", "")
-                    .Replace("\\", "/")
-                    .Replace("/Runtime/", "");
-
-                packageBasePath = scriptPath;
+                
+                packageBasePath = EditorHelper.GetBasePathOfScript("LocalizationEditorUtils");
                 return packageBasePath;
             }
         }

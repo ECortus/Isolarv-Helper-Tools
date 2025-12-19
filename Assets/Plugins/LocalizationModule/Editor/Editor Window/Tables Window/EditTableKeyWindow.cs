@@ -36,7 +36,7 @@ namespace LocalizationModule.Editor
             
             var visualTree =
                 AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                    $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/EditTableKeyItem.uxml");
+                    $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/EditTableKeyItem.uxml");
             visualTree.CloneTree(this);
             
             _keyLabel = this.Q<Label>("key-label");
@@ -48,7 +48,7 @@ namespace LocalizationModule.Editor
         void CreateTranslateFields()
         {
             var template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/EditTranslateKeyItem.uxml");
+                $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Tables Window/EditTranslateKeyItem.uxml");
 
             var box = this.Q<GroupBox>("key-languages-box");
             

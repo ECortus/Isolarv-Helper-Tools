@@ -2,7 +2,8 @@
     "name": "GameSaveKit.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:0243450557c230842b6e35279441b8f6"
+        "GUID:0243450557c230842b6e35279441b8f6",
+        "GUID:b466c6ab29dea8a408e8cd4602c12ee8"
     ],
     "includePlatforms": [
         "Editor"

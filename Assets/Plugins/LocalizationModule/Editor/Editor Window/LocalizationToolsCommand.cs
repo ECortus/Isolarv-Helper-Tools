@@ -46,14 +46,14 @@ namespace LocalizationModule.Editor
         static async UniTask ValidateByKeys()
         {
             var keys = AssetDatabase.FindAssets("t:LocalizationKeyCollection", new string[] 
-                { $"{EditorUtils.KEYS_PATH}" });
+                { $"{LocalizationEditorUtils.KEYS_PATH}" });
             
             foreach (var key in keys)
             {
                 var path = AssetDatabase.GUIDToAssetPath(key);
                 var asset = AssetDatabase.LoadAssetAtPath<LocalizationKeyCollection>(path);
                 
-                EditorUtils.ValidateTableOfKeys(asset);
+                LocalizationEditorUtils.ValidateTableOfKeys(asset);
                 
                 await UniTask.Yield();
             }
@@ -62,7 +62,7 @@ namespace LocalizationModule.Editor
         static async UniTask ValidateByTables()
         {
             var tables = AssetDatabase.FindAssets("t:TranslateTable", new string[] 
-                { $"{EditorUtils.TABLES_PATH}" });
+                { $"{LocalizationEditorUtils.TABLES_PATH}" });
             
             foreach (var table in tables)
             {

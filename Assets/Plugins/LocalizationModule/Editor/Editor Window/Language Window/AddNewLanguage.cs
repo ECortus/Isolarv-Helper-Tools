@@ -23,7 +23,7 @@ namespace LocalizationModule.Editor
             
             var visualTree =
                 AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                    $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Language Window/AddNewLanguageWindow.uxml");
+                    $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Language Window/AddNewLanguageWindow.uxml");
             visualTree.CloneTree(this);
             
             var contentBox = this.Q<GroupBox>("fields-box");

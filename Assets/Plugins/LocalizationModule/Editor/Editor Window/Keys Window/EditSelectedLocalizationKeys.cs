@@ -22,7 +22,7 @@ namespace LocalizationModule.Editor
             
             var visualTree =
                 AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                    $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationEditWindow.uxml");
+                    $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationEditWindow.uxml");
             visualTree.CloneTree(this);
             
             _scrollView = this.Q<ScrollView>("scroll-view");
@@ -37,7 +37,7 @@ namespace LocalizationModule.Editor
             var validateTableButton = this.Q<Button>("validate-table");
             validateTableButton.clicked += () =>
             {
-                EditorUtils.ValidateTableOfKeys(_localizationKeyCollection);
+                LocalizationEditorUtils.ValidateTableOfKeys(_localizationKeyCollection);
             };
 
             _removeDuplicatesButton = this.Q<Button>("remove-duplicates");
@@ -109,7 +109,7 @@ namespace LocalizationModule.Editor
         void CreateEmptyLabel()
         {
             var template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationEditEmptyItem.uxml");
+                $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationEditEmptyItem.uxml");
             
             var item = template.Instantiate();
             _scrollView.Add(item);
@@ -118,7 +118,7 @@ namespace LocalizationModule.Editor
         void AddScrollItem(int index)
         {
             var template = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationKeyEditItem.uxml");
+                $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Keys Window/LocalizationKeyEditItem.uxml");
             
             var keysProperty = _serializedObject.FindProperty("keys");
             

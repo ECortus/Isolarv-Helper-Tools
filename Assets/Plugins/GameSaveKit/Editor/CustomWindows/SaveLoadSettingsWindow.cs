@@ -10,7 +10,7 @@ namespace GameSaveKit.Editor.CustomWindows
         {
             var visualTree =
                 AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                    $"{GameSaveKitEditorUtils.PACKAGE_EDITOR_PATH}/CustomWindows/SaveLoadSettingsWindow.uxml");
+                    $"{GameSaveEditorUtils.PACKAGE_EDITOR_PATH}/CustomWindows/SaveLoadSettingsWindow.uxml");
             
             VisualElement root = rootVisualElement;
 

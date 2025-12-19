@@ -28,13 +28,13 @@ namespace LocalizationModule.Editor
         public void CreateGUI()
         {
             _languageKeyCollection = AssetDatabase.LoadAssetAtPath<LanguageKeyCollection>(
-                $"{EditorUtils.PACKAGE_BASE_PATH}/Data/Language Key Collection.asset");
+                $"{LocalizationEditorUtils.PACKAGE_BASE_PATH}/Data/Language Key Collection.asset");
             
             VisualElement root = rootVisualElement;
 
             var visualTree =
                 AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                    $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Language Window/LanguageKeysWindow.uxml");
+                    $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Language Window/LanguageKeysWindow.uxml");
             
             VisualElement labelFromUxml = visualTree.Instantiate();
             root.Add(labelFromUxml);
@@ -91,7 +91,7 @@ namespace LocalizationModule.Editor
             _languageListView = rootVisualElement.Q<ListView>("language-list-view");
             
             _listViewItemTemplate = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-                $"{EditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Language Window/LanguageListViewItem.uxml");
+                $"{LocalizationEditorUtils.PACKAGE_EDITOR_PATH}/Editor Window/Language Window/LanguageListViewItem.uxml");
             
             _languageListView.itemsSource = _keysSet;
             _languageListView.selectionType = SelectionType.Single;

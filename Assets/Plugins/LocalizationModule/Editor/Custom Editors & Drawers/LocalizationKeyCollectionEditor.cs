@@ -61,7 +61,7 @@ namespace LocalizationModule.Editor
             
             if (GUILayout.Button("Validate Table"))
             {
-                EditorUtils.ValidateTableOfKeys(collection);
+                LocalizationEditorUtils.ValidateTableOfKeys(collection);
             }
         }
         

@@ -16,6 +16,37 @@ namespace GameDevUtils.Editor
     
     public static class EditorHelper
     {
+        public static string GetBasePathOfScript(string scriptName)
+        {
+            var dataPath = Application.dataPath
+                .Replace("/Assets", "");
+
+            var searchScript = $"{scriptName.Replace(".cs", "")}.cs";
+
+            string[] res = System.IO.Directory.GetFiles(dataPath, searchScript, SearchOption.AllDirectories);
+                
+            if (res.Length == 0)
+                throw new Exception($"{searchScript} not found");
+
+            //TODO: adapt script path to work with Assets
+            var scriptPath = res[0].Replace(dataPath, "")
+                .Replace("\\", "/")
+                .Replace($"{searchScript}", "")
+                .Replace("/Editor/", "")
+                .Remove(0, 1);
+                
+            //TODO: adapt script path to work with Packages
+            scriptPath = scriptPath.Replace("Library/PackageCache", "Packages");
+                
+            var indexOfAtSign = scriptPath.IndexOf("@", StringComparison.Ordinal);
+            if (indexOfAtSign != -1)
+            {
+                scriptPath = scriptPath.Remove(indexOfAtSign, 13);
+            }
+
+            return scriptPath;
+        }
+        
         public static Object CreateOrGetNewScriptableAsset<T>(string newName, string path, 
             SerializedProperty newDataProperty, T oldData) where T : ScriptableObject, IValidationObject
         {
