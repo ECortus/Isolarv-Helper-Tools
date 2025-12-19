@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace GameSaveKit.Editor
 {
-    internal static class EditorUtils
+    internal static class GameSaveKitEditorUtils
     {
         static string packageBasePath;
         public static string PACKAGE_BASE_PATH
@@ -16,24 +16,26 @@ namespace GameSaveKit.Editor
                 if (!string.IsNullOrEmpty(packageBasePath))
                     return packageBasePath;
 
-                string[] res = System.IO.Directory.GetFiles(Application.dataPath, "EditorUtils.cs", SearchOption.AllDirectories);
-                if (res.Length == 0)
-                {
-                    packageBasePath = "Packages/com.isolarv.save-load-tool";
-                    return packageBasePath;
-                }
+                var dataPath = Application.dataPath
+                    .Replace("/Assets", "");
 
-                var scriptPath = res[0].Replace(Application.dataPath, "Assets")
-                    .Replace("EditorUtils.cs", "")
+                string[] res = System.IO.Directory.GetFiles(dataPath, "GameSaveKitEditorUtils.cs", SearchOption.AllDirectories);
+                
+                if (res.Length == 0)
+                    throw new Exception("GameSaveKitEditorUtils.cs not found");
+
+                var scriptPath = res[0].Replace(dataPath, "")
                     .Replace("\\", "/")
-                    .Replace("/Editor/", "");
+                    .Replace("GameSaveKitEditorUtils.cs", "")
+                    .Replace("/Editor/", "")
+                    .Remove(0, 1);
 
                 packageBasePath = scriptPath;
                 return packageBasePath;
             }
         }
         
-        internal static string PACKAGE_EDITOR_PATH => PACKAGE_BASE_PATH + "/Editor";
+        public static string PACKAGE_EDITOR_PATH => $"{PACKAGE_BASE_PATH}/Editor";
         
         private static Texture _toolIcon;
         public static GUIContent GetWindowTitle(string windowName)

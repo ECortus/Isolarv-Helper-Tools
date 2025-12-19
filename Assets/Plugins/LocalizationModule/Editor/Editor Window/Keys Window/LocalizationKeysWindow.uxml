@@ -1,11 +1,12 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/IsolarvLocalizationTool/Editor/Editor%20Window/Keys%20Window/LocalizationKeysWindow.uss?fileID=7433441132597879392&amp;guid=fa6a6809b0b4fde4ba79cecb9999c9d7&amp;type=3#LocalizationKeysWindow" />
+    <Style src="project://database/Assets/Plugins/LocalizationModule/Editor/Editor%20Window/Keys%20Window/LocalizationKeysWindow.uss?fileID=7433441132597879392&amp;guid=fa6a6809b0b4fde4ba79cecb9999c9d7&amp;type=3#LocalizationKeysWindow"/>
     <ui:VisualElement style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); opacity: 1; background-size: 100% 100%;">
-        <ui:Label text="Localization keys" class="main-label c-main-label" />
-        <ui:TextField label="Enter name" placeholder-text="*name*" name="new-collection-field" readonly="false" class="c-new-collection-field" />
-        <ui:Label text="Preview name: &#10;*name*_KeyCollection" name="preview-collection-name" class="c-preview-name" />
-        <ui:Button text="Add new keys collection" name="add-localization-button" emoji-fallback-support="true" class="c-add-language-button" />
-        <ui:ListView name="localization-list-view" class="c-language-list-view" />
+        <ui:Label text="Localization keys" class="main-label c-main-label"/>
+        <ui:TextField label="Enter name" placeholder-text="*name*" name="new-collection-field" readonly="false" class="c-new-collection-field"/>
+        <ui:Label text="Preview name: 
+*name*_KeyCollection" name="preview-collection-name" class="c-preview-name"/>
+        <ui:Button text="Add new keys collection" name="add-localization-button" emoji-fallback-support="true" class="c-add-language-button"/>
+        <ui:ListView name="localization-list-view" class="c-language-list-view"/>
     </ui:VisualElement>
-    <ui:GroupBox name="content-box" class="c-content-box" />
+    <ui:GroupBox name="content-box" class="c-content-box"/>
 </ui:UXML>

@@ -71,8 +71,8 @@
     flex-wrap: nowrap;
     flex-basis: auto;
     -unity-slice-type: sliced;
-    background-position-x: center 0;
-    background-position-y: center 0;
+    background-position-x: center;
+    background-position-y: center;
     -unity-paragraph-spacing: 0;
     word-spacing: 0;
     min-width: 199px;

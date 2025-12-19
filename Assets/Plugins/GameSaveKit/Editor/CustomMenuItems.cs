@@ -1,7 +1,9 @@
 ﻿using GameSaveKit.Editor.CustomWindows;
 using GameSaveKit.Runtime.Saveable;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameSaveKit.Editor
 {
@@ -21,6 +23,7 @@ namespace GameSaveKit.Editor
             var prefabObject = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             
             PrefabUtility.InstantiatePrefab(prefabObject);
+            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
         
         [MenuItem("Tools/Isolarv/Game Save Kit/Settings", false, 15)]
