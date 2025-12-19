@@ -24,11 +24,21 @@ namespace GameSaveKit.Editor
                 if (res.Length == 0)
                     throw new Exception("GameSaveKitEditorUtils.cs not found");
 
+                //TODO: adapt script path to work with Assets
                 var scriptPath = res[0].Replace(dataPath, "")
                     .Replace("\\", "/")
                     .Replace("GameSaveKitEditorUtils.cs", "")
                     .Replace("/Editor/", "")
                     .Remove(0, 1);
+                
+                //TODO: adapt script path to work with Packages
+                scriptPath = scriptPath.Replace("Libraty/PackageCache", "Packages");
+                
+                var indexOfAtSign = scriptPath.IndexOf("@", StringComparison.Ordinal);
+                if (indexOfAtSign != -1)
+                {
+                    scriptPath = scriptPath.Remove(indexOfAtSign, 13);
+                }
                 
                 Debug.Log(scriptPath);
 
