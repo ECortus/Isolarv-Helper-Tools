@@ -1,10 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameDevUtils.Runtime
 {
     public abstract class UnitySingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T _instance;
+        static T _instance;
+        
+        void Awake()
+        {
+            if (_instance)
+            {
+                if (_instance != this)
+                {
+                    ObjectHelper.Destroy(this.gameObject);
+                    return;
+                }
+            }
+            else
+            {
+                _instance = this as T;
+            }
+            
+            OnAwake();
+        }
+
+        protected virtual void OnAwake() { }
 
         public static bool HasInstance => _instance;
 
@@ -12,9 +33,7 @@ namespace GameDevUtils.Runtime
         {
             get
             {
-                if (!_instance)
-                    TryFindObject();
-
+                TryFindObject(out _instance);
                 return _instance;
             }
         }
@@ -23,13 +42,10 @@ namespace GameDevUtils.Runtime
         {
             get
             {
+                TryFindObject(out _instance);
+                
                 if (!_instance)
-                {
-                    TryFindObject();
-
-                    if (!_instance)
-                        DebugHelper.LogError("Not found instance of SINGLETON object!!!");
-                }
+                    DebugHelper.LogError("Not found instance of SINGLETON object!!!");
 
                 return _instance;
             }
@@ -39,15 +55,21 @@ namespace GameDevUtils.Runtime
         {
             get
             {
-                if (!_instance)
-                {
-                    TryFindObject();
+                TryFindObject(out _instance);
 
-                    if (!_instance)
-                        AddNewObject();
-                }
+                if (!_instance)
+                    AddNewObject();
 
                 return _instance;
+            }
+        }
+        
+        public static void DestroySingleton()
+        {
+            if (_instance)
+            {
+                ObjectHelper.Destroy(_instance.gameObject);
+                _instance = null;
             }
         }
 
@@ -56,9 +78,15 @@ namespace GameDevUtils.Runtime
             _instance = t;
         }
 
-        static void TryFindObject()
+        static void TryFindObject(out T instance)
         {
-            var instance = (T)FindAnyObjectByType(typeof(T));
+            if (_instance != null)
+            {
+                instance = _instance;
+                return;
+            }
+            
+            instance = (T)FindAnyObjectByType(typeof(T));
             SetInstance(instance);
         }
 
@@ -70,15 +98,6 @@ namespace GameDevUtils.Runtime
             instance.name = "(singleton) " + typeof(T).ToString();
 
             SetInstance(instance);
-        }
-
-        public static void DestroySingleton()
-        {
-            if (_instance)
-            {
-                Destroy(_instance.gameObject);
-                _instance = null;
-            }
         }
     }
 }

@@ -8,30 +8,15 @@ using UnityEngine;
 
 namespace GameSaveKit.Runtime.Saveable
 {
-    public sealed class SaveableSupervisor : MonoBehaviour
+    public sealed class SaveableSupervisor : UnitySingleton<SaveableSupervisor>
     {
-        static SaveableSupervisor instance { get; set; }
-        public static bool Exist() => instance != null;
-        
         readonly HashSet<object> saveableBehaviours = new HashSet<object>();
         
-        private void Awake()
-        {
-            if (instance != null)
-            {
-                Debug.LogWarning("[Save-Load Tool] SaveableSupervisor already exist on scene.");
-                
-                ObjectHelper.Destroy(this.gameObject);
-                return;
-            }
-            
-            instance = this;
-            ObjectHelper.DontDestroyOnLoad(this.gameObject);
-        }
+        public static bool Exist() => HasOrFindInstance;
         
-        private void OnDestroy()
+        protected override void OnAwake()
         {
-            instance = null;
+            ObjectHelper.DontDestroyOnLoad(this.gameObject);
         }
         
         public static void AddBehaviour<T>(ISaveableBehaviour<T> behaviour) where T : GamePrefs, new()
@@ -39,6 +24,7 @@ namespace GameSaveKit.Runtime.Saveable
             if (!Exist())
                 throw new NonExistedException();
             
+            var instance = GetInstance;
             instance.saveableBehaviours.Add(behaviour);
 
             if (GameSaveParametersSettings.LoadBehavioursOnAdding)
@@ -52,6 +38,7 @@ namespace GameSaveKit.Runtime.Saveable
             if (!Exist())
                 throw new NonExistedException();
             
+            var instance = GetInstance;
             instance.saveableBehaviours.Remove(behaviour);
         }
         
@@ -60,6 +47,7 @@ namespace GameSaveKit.Runtime.Saveable
             if (!Exist())
                 throw new NonExistedException();
             
+            var instance = GetInstance;
             return instance.saveableBehaviours.OfType<ISaveableBehaviour<T>>().ToHashSet();
         }
 

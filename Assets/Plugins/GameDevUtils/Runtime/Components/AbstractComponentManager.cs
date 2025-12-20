@@ -42,7 +42,7 @@ namespace GameDevUtils.Runtime
             _onUnregisterComponent?.Invoke(element);
         }
         
-        void OnDestroy()
+        protected virtual void OnDestroy()
         {
             _onRegister.RemoveAllListeners();
             _onRegisterComponent.RemoveAllListeners();

@@ -5,11 +5,15 @@ namespace GameDevUtils.Runtime
     public abstract class UnityScriptableSingleton<T> : ScriptableObject
         where T : ScriptableObject
     {
-        public static T Instance { get; private set; }
+        static T _instance;
+        
+        public static bool HasInstance => _instance;
+        
+        public static T GetInstance => _instance;
         
         public void Init()
         {
-            Instance = this as T;
+            _instance = this as T;
         }
     }
 }
