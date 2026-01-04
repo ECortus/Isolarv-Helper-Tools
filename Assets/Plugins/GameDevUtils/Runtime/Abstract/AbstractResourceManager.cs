@@ -1,4 +1,5 @@
 ﻿using System;
+using Plugins.GameDevUtils.Runtime.Extensions;
 using UnityEngine;
 
 namespace GameDevUtils.Runtime
@@ -11,7 +12,7 @@ namespace GameDevUtils.Runtime
             get => _resource;
             set
             {
-                if (Mathf.Approximately(value, _resource))
+                if (value.Equal(_resource))
                 {
                     return;
                 }
