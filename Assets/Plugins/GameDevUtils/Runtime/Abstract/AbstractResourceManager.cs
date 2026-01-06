@@ -6,7 +6,7 @@ namespace GameDevUtils.Runtime
 {
     public abstract class AbstractResourceManager<T> : UnitySingleton<T> where T : MonoBehaviour
     {
-        float resource;
+        [SerializeField, ReadOnly] float resource;
         
         void SetResource(float value)
         {
