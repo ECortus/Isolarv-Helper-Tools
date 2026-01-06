@@ -128,10 +128,10 @@ namespace GameDevUtils.Runtime.Triggers
         {
             if (inStayEvent)
             {
-                DebugHelper.Log($"TriggerObject {gameObject.name}: OnTriggerStay by {other.gameObject.name}");
-                
                 if (other.IsSameMask(layerMask))
                 {
+                    DebugHelper.Log($"TriggerObject {gameObject.name}: OnTriggerStay by {other.gameObject.name}");
+                    
                     OnTriggerStayEvent?.Invoke();
                     OnTriggerStayColliderEvent?.Invoke(other);
                 }
@@ -142,10 +142,10 @@ namespace GameDevUtils.Runtime.Triggers
         {
             if (inExitEvent)
             {
-                DebugHelper.Log($"TriggerObject {gameObject.name}: OnTriggerExit by {other.gameObject.name}");
-                
                 if (other.IsSameMask(layerMask))
                 {
+                    DebugHelper.Log($"TriggerObject {gameObject.name}: OnTriggerExit by {other.gameObject.name}");
+
                     OnTriggerExitEvent?.Invoke();
                     OnTriggerExitColliderEvent?.Invoke(other);
                 }
