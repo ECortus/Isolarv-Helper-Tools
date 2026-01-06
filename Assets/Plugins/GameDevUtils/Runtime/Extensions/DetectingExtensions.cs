@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameDevUtils.Runtime.Extensions
 {
@@ -6,7 +7,8 @@ namespace GameDevUtils.Runtime.Extensions
     {
         public static bool IsSameMask(this Collider collider, LayerMask mask)
         {
-            return IsSameMask(collider.gameObject, LayerMask.LayerToName(mask.value));
+            int index = (int)Mathf.Log(mask.value, 2);
+            return IsSameMask(collider.gameObject, LayerMask.LayerToName(index));
         }
         
         public static bool IsSameMask(this Collider collider, string name)
