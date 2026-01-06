@@ -4,6 +4,11 @@ namespace GameDevUtils.Runtime.Extensions
 {
     public static class DetectingExtensions
     {
+        public static bool IsSameMask(this Collider collider, LayerMask mask)
+        {
+            return IsSameMask(collider.gameObject, LayerMask.LayerToName(mask));
+        }
+        
         public static bool IsSameMask(this Collider collider, string name)
         {
             return IsSameMask(collider.gameObject, name);
@@ -12,6 +17,11 @@ namespace GameDevUtils.Runtime.Extensions
         public static bool IsSameMaskBitwise(this Collider collider, string name)
         {
             return IsSameMaskBitwise(collider.gameObject, name);
+        }
+        
+        public static bool IsSameMask(this Collision collision, LayerMask mask)
+        {
+            return IsSameMask(collision.gameObject, LayerMask.LayerToName(mask));
         }
         
         public static bool IsSameMask(this Collision collision, string name)

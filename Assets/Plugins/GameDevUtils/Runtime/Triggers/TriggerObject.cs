@@ -1,4 +1,5 @@
 ﻿using System;
+using GameDevUtils.Runtime.Extensions;
 using Plugins.GameDevUtils.Runtime.Extensions;
 using UnityEngine;
 
@@ -6,21 +7,24 @@ namespace GameDevUtils.Runtime.Triggers
 {
     public class TriggerObject : MonoBehaviour
     {
-        public enum EDimension
+        enum EDimension
         {
             TwoDimension,
             ThreeDimension
         }
         
-        public EDimension Dimension = EDimension.ThreeDimension;
+        [SerializeField] private EDimension dimension = EDimension.ThreeDimension;
         
         [Space(5)]
-        public string Id = "trigger_object_sample_id";
+        [SerializeField] private string id = "trigger_object_sample_id";
         
         [Space(5)]
-        public bool InEnterEvent = true;
-        public bool InStayEvent = true;
-        public bool InExitEvent = true;
+        [SerializeField] private bool inEnterEvent = true;
+        [SerializeField] private bool inStayEvent = true;
+        [SerializeField] private bool inExitEvent = true;
+        
+        [Space(5)]
+        [SerializeField] private LayerMask layerMask = ~0;
 
         Rigidbody2D rb2D;
         Collider2D[] colliders2D;
@@ -28,13 +32,15 @@ namespace GameDevUtils.Runtime.Triggers
         Rigidbody rb;
         Collider[] colliders;
         
-        void Awake()
+        public string Id => id;
+        
+        private void Awake()
         {
-            if (Dimension == EDimension.ThreeDimension)
+            if (dimension == EDimension.ThreeDimension)
             {
                 Setup3D();
             }
-            else if (Dimension == EDimension.TwoDimension)
+            else if (dimension == EDimension.TwoDimension)
             {
                 Setup2D();
             }
@@ -43,6 +49,15 @@ namespace GameDevUtils.Runtime.Triggers
                 DebugHelper.LogError($"TriggerObject {gameObject.name}: Invalid dimension");
             }
         }
+        
+        protected virtual void OnAwake() { }
+
+        private void Start()
+        {
+            OnStart();
+        }
+        
+        protected virtual void OnStart() { }
 
         void Setup2D()
         {
@@ -87,30 +102,46 @@ namespace GameDevUtils.Runtime.Triggers
         
         void OnTriggerEnter(Collider other)
         {
-            if (InEnterEvent)
+            if (inEnterEvent)
             {
-                OnTriggerEnterEvent?.Invoke(other);
+                if (other.IsSameMask(layerMask))
+                {
+                    OnTriggerEnterEvent?.Invoke();
+                    OnTriggerEnterColliderEvent?.Invoke(other);
+                }
             }
         }
         
         void OnTriggerStay(Collider other)
         {
-            if (InStayEvent)
+            if (inStayEvent)
             {
-                OnTriggerStayEvent?.Invoke(other);
+                if (other.IsSameMask(layerMask))
+                {
+                    OnTriggerStayEvent?.Invoke();
+                    OnTriggerStayColliderEvent?.Invoke(other);
+                }
             }
         }
         
         void OnTriggerExit(Collider other)
         {
-            if (InExitEvent)
+            if (inExitEvent)
             {
-                OnTriggerExitEvent?.Invoke(other);
+                if (other.IsSameMask(layerMask))
+                {
+                    OnTriggerExitEvent?.Invoke();
+                    OnTriggerExitColliderEvent?.Invoke(other);
+                }
             }
         }
         
-        public event Action<Collider> OnTriggerEnterEvent;
-        public event Action<Collider> OnTriggerStayEvent;
-        public event Action<Collider> OnTriggerExitEvent;
+        public event Action OnTriggerEnterEvent;
+        public event Action OnTriggerStayEvent;
+        public event Action OnTriggerExitEvent;
+        
+        public event Action<Collider> OnTriggerEnterColliderEvent;
+        public event Action<Collider> OnTriggerStayColliderEvent;
+        public event Action<Collider> OnTriggerExitColliderEvent;
     }
 }
