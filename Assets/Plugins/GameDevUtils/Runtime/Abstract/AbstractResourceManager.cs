@@ -15,16 +15,17 @@ namespace GameDevUtils.Runtime
                 return;
             }
                 
-            onChanged?.Invoke();
-            onValueChanged?.Invoke(value);
-                
-            if (value < 0)
+            if (value > 0)
+            {
+                this.resource = value;
+            }
+            else
             {
                 this.resource = 0;
-                return;
             }
-                
-            this.resource = value;
+            
+            onChanged?.Invoke();
+            onValueChanged?.Invoke(value);
         }
         
         public void Plus(float amount)
