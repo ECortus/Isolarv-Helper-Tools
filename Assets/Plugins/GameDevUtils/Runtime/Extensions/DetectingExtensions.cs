@@ -7,8 +7,7 @@ namespace GameDevUtils.Runtime.Extensions
     {
         public static bool IsSameMask(this Collider collider, LayerMask mask)
         {
-            int index = (int)Mathf.Log(mask.value, 2);
-            return IsSameMask(collider.gameObject, LayerMask.LayerToName(index));
+            return (1 << collider.gameObject.layer & mask) != 0;
         }
         
         public static bool IsSameMask(this Collider collider, string name)
@@ -23,7 +22,7 @@ namespace GameDevUtils.Runtime.Extensions
         
         public static bool IsSameMask(this Collision collision, LayerMask mask)
         {
-            return IsSameMask(collision.gameObject, LayerMask.LayerToName(mask));
+            return collision.gameObject.layer == mask.value;
         }
         
         public static bool IsSameMask(this Collision collision, string name)
@@ -36,12 +35,12 @@ namespace GameDevUtils.Runtime.Extensions
             return IsSameMaskBitwise(collision.gameObject, name);
         }
 
-        static bool IsSameMask(this GameObject obj, string name)
+        public static bool IsSameMask(this GameObject obj, string name)
         {
             return obj.layer == LayerMask.NameToLayer(name);
         }
         
-        static bool IsSameMaskBitwise(this GameObject obj, string name)
+        public static bool IsSameMaskBitwise(this GameObject obj, string name)
         {
             return obj.layer == 1 << LayerMask.NameToLayer(name);
         }
