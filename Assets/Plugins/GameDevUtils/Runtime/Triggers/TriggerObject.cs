@@ -59,6 +59,16 @@ namespace GameDevUtils.Runtime.Triggers
         
         protected virtual void OnStart() { }
 
+        protected void Enable()
+        {
+            gameObject.SetActive(true);
+        }
+        
+        protected void Disable()
+        {
+            gameObject.SetActive(false);
+        }
+
         void Setup2D()
         {
             rb2D = this.GetOrAddComponent<Rigidbody2D>();

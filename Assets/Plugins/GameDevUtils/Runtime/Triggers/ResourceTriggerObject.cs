@@ -6,6 +6,7 @@ namespace GameDevUtils.Runtime.Triggers
     {
         [Space(10)] 
         [SerializeField] private float resourceAmount = 5;
+        [SerializeField] private bool disableObjectOnEnter = true;
 
         public void SetAmount(float customAmount)
         {
@@ -21,6 +22,11 @@ namespace GameDevUtils.Runtime.Triggers
         protected virtual void OnTriggerEnterMethod()
         {
             AddResource(resourceAmount);
+            
+            if (disableObjectOnEnter)
+            {
+                Disable();
+            }
         }
 
         protected abstract void AddResource(float amount);

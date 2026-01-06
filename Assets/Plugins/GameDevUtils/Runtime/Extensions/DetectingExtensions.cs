@@ -6,7 +6,7 @@ namespace GameDevUtils.Runtime.Extensions
     {
         public static bool IsSameMask(this Collider collider, LayerMask mask)
         {
-            return IsSameMask(collider.gameObject, LayerMask.LayerToName(mask));
+            return IsSameMask(collider.gameObject, LayerMask.LayerToName(mask.value));
         }
         
         public static bool IsSameMask(this Collider collider, string name)
