@@ -48,6 +48,8 @@ namespace GameDevUtils.Runtime.Triggers
             {
                 DebugHelper.LogError($"TriggerObject {gameObject.name}: Invalid dimension");
             }
+            
+            OnAwake();
         }
         
         protected virtual void OnAwake() { }

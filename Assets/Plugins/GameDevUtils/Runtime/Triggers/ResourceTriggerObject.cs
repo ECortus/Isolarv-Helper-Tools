@@ -15,7 +15,6 @@ namespace GameDevUtils.Runtime.Triggers
 
         protected override void OnAwake()
         {
-            base.OnAwake();
             OnTriggerEnterEvent += OnTriggerEnterMethod;
         }
 
