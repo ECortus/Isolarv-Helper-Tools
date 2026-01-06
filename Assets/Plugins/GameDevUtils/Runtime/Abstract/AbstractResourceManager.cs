@@ -6,58 +6,57 @@ namespace GameDevUtils.Runtime
 {
     public abstract class AbstractResourceManager<T> : UnitySingleton<T> where T : MonoBehaviour
     {
-        float _resource;
-        float Resource
+        float resource;
+        
+        void SetResource(float value)
         {
-            get => _resource;
-            set
+            if (value.Equal(resource))
             {
-                if (value.Equal(_resource))
-                {
-                    return;
-                }
-                
-                onChanged?.Invoke();
-                onValueChanged?.Invoke(value);
-                
-                if (value < 0)
-                {
-                    this._resource = 0;
-                    return;
-                }
-                
-                this._resource = value;
+                return;
             }
+                
+            onChanged?.Invoke();
+            onValueChanged?.Invoke(value);
+                
+            if (value < 0)
+            {
+                this.resource = 0;
+                return;
+            }
+                
+            this.resource = value;
         }
         
         public void Plus(float amount)
         {
-            Resource += amount;
+            var newAmount = resource + amount;
+            SetResource(newAmount);
         }
         
         public void Reduce(float amount)
         {
-            Resource -= amount;
+            var newAmount = resource - amount;
+            SetResource(newAmount);
         }
         
         public float GetValue()
         {
-            return Resource;
+            return resource;
         }
         
         public int GetValueInt()
         {
-            return (int)Resource;
+            return (int)resource;
         }
         
         public void SetValue(float value)
         {
-            Resource = value;
+            SetResource(value);
         }
 
         public void ResetValue()
         {
-            Resource = 0;
+            SetResource(0);
         }
         
         public event Action onChanged;
