@@ -27,7 +27,7 @@ namespace GameSaveKit.Runtime.Saveable
             var instance = GetInstance;
             instance.saveableBehaviours.Add(behaviour);
 
-            if (GameSaveParametersSettings.LoadBehavioursOnAdding)
+            if (SaveKitParametersSettings.LoadBehavioursOnAdding)
             {
                 SaveablePrefs.LoadBehaviour<T>(behaviour);
             }

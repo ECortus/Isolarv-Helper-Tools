@@ -24,15 +24,15 @@ namespace GameSaveKit.Editor.CustomWindows
         {
             var loadBehavioursOnAddingField = rootVisualElement.Q<Toggle>("load-behaviours-on-adding");
             loadBehavioursOnAddingField.label = "Load Behaviours On Adding";
-            loadBehavioursOnAddingField.value = GameSaveParametersSettings.LoadBehavioursOnAdding;
-            loadBehavioursOnAddingField.RegisterValueChangedCallback(evt => GameSaveParametersSettings.LoadBehavioursOnAdding = evt.newValue);
+            loadBehavioursOnAddingField.value = SaveKitParametersSettings.LoadBehavioursOnAdding;
+            loadBehavioursOnAddingField.RegisterValueChangedCallback(evt => SaveKitParametersSettings.LoadBehavioursOnAdding = evt.newValue);
             
             var savingTypeField = rootVisualElement.Q<EnumField>("saving-type");
             savingTypeField.label = "Saving Type";
-            savingTypeField.dataSourceType = typeof(GameSaveParametersSettings.ESavingType);
-            savingTypeField.value = GameSaveParametersSettings.SavingType;
+            savingTypeField.dataSourceType = typeof(SaveKitParametersSettings.ESavingType);
+            savingTypeField.value = SaveKitParametersSettings.SavingType;
             savingTypeField.RegisterValueChangedCallback(evt => 
-                GameSaveParametersSettings.SavingType = (GameSaveParametersSettings.ESavingType)evt.newValue);
+                SaveKitParametersSettings.SavingType = (SaveKitParametersSettings.ESavingType)evt.newValue);
         }
     }
 }

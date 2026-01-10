@@ -11,12 +11,14 @@ namespace GameDevUtils.Runtime.Settings
         {
             get
             {
-                if (!DevUtilsSettingsSO.HasInstance)
-                {
-                    DevUtilsSettingsSO.FindInAssets("Dev Utils Settings Scriptable Object");
-                }
-
+#if UNITY_EDITOR
+                DevUtilsSettingsSO.FindAsset("Dev Utils Settings Scriptable Object");
+                
+                var instance = DevUtilsSettingsSO.GetInstance;
+                return instance;
+#else
                 return DevUtilsSettingsSO.GetInstance;
+#endif
             }
         }
         

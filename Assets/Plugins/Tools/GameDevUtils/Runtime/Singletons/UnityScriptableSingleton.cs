@@ -17,8 +17,10 @@ namespace GameDevUtils.Runtime
         public static bool HasInstance => _instance;
         
         public static T GetInstance => _instance;
-
-        public static void FindInAssets(string name)
+        
+#if UNITY_EDITOR
+        
+        public static void FindAsset(string name)
         {
             var prefab = AssetDatabase.FindAssets(name)[0];
             var path = AssetDatabase.GUIDToAssetPath(prefab);
@@ -27,8 +29,16 @@ namespace GameDevUtils.Runtime
             _instance = prefabObject as T;
         }
         
+#endif
+        
         public void Init()
         {
+            if (_instance && _instance != this)
+            {
+                DebugHelper.LogError($"{typeof(T).Name} instance already exists. {typeof(T).Name} will not be initialized.");
+                return;
+            }
+            
             _instance = this as T;
         }
     }

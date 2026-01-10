@@ -3,7 +3,7 @@
 namespace GameSaveKit.Runtime.Settings
 {
     [System.Serializable]
-    public sealed class GameSavePathSettings
+    public sealed class SaveKitPathSettings
     {
         public static string GetDirectory()
         {

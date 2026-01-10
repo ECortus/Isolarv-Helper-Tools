@@ -1,9 +1,12 @@
-﻿using GameSaveKit.Editor.CustomWindows;
+﻿using System.Collections.Generic;
+using System.Linq;
+using GameSaveKit.Editor.CustomWindows;
 using GameSaveKit.Runtime.Saveable;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace GameSaveKit.Editor
 {
@@ -30,6 +33,38 @@ namespace GameSaveKit.Editor
         public static void ShowWindow()
         {
             EditorWindowUtils.ShowWindow<SaveLoadSettingsWindow>("Save & Load Settings");
+        }
+        
+        [MenuItem("Tools/Isolarv/Game Save Kit/Copy installer into project context", false, 12)]
+        public static void CopyInstallerIntoProjectContext()
+        {
+            var prefabObject = Resources.Load<GameObject>("ProjectContext");
+            if (!prefabObject)
+            {
+                Debug.LogError("[Save-Load Tool] Context not instantiated.");
+                return;
+            }
+            
+            var installerPrefab = AssetDatabase.FindAssets("Save Kit Mono Installer")[0];
+            var installerPath = AssetDatabase.GUIDToAssetPath(installerPrefab);
+            var installerPrefabObject = AssetDatabase.LoadAssetAtPath<GameObject>(installerPath);
+            
+            ProjectContext context = prefabObject.GetComponent<ProjectContext>(); 
+            MonoInstaller installer = installerPrefabObject.GetComponent<MonoInstaller>();
+
+            if (context.InstallerPrefabs.Contains(installer))
+            {
+                Debug.Log("[Save-Load Tool] Context already contains SaveKitMonoInstaller");
+                return;
+            }
+            
+            var prefabs = new List<MonoInstaller>();
+            prefabs.AddRange(context.InstallerPrefabs);
+            
+            context.InstallerPrefabs = prefabs.Append(installer);
+            
+            EditorUtility.SetDirty(context);
+            AssetDatabase.SaveAssetIfDirty(context);
         }
     }
 }

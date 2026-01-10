@@ -8,12 +8,6 @@ namespace GameSaveKit.Editor.CustomWindows
 {
     internal class DevUtilsSettingsWindow : EditorWindow
     {
-        [MenuItem("Tools/Isolarv/Game Dev Utils/Settings", false, 10)]
-        public static void ShowWindow()
-        {
-            EditorWindowUtils.ShowWindow<DevUtilsSettingsWindow>("Dev Utils Settings");
-        }
-        
         public void CreateGUI()
         {
             var visualTree =

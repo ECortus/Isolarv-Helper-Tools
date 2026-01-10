@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Plugins/Tools/GameDevUtils/Tests/TestScene.unity
+    guid: 3a63884c23b28574d8747278bfdb9120
+  - enabled: 1
+    path: Assets/Plugins/Tools/GameDevUtils/Tests/TestScene 1.unity
+    guid: 6c00d1613b9486f4a87cf1b8f3037c2a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

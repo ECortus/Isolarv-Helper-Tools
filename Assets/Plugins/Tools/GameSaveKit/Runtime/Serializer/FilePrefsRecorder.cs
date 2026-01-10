@@ -15,7 +15,7 @@ namespace GameSaveKit.Runtime.Serializer
         
         public static void WriteRecord<T>(int id, T prefs) where T : GamePrefs, new()
         {
-            var saveFilePath = GameSavePathSettings.GetDirectory();
+            var saveFilePath = SaveKitPathSettings.GetDirectory();
             if (!Directory.Exists(saveFilePath))
             {
                 if (saveFilePath == null)
@@ -43,12 +43,12 @@ namespace GameSaveKit.Runtime.Serializer
 
             void WriteFile()
             {
-                switch (GameSaveParametersSettings.SavingType)
+                switch (SaveKitParametersSettings.SavingType)
                 {
-                    case GameSaveParametersSettings.ESavingType.Json:
+                    case SaveKitParametersSettings.ESavingType.Json:
                         WriteOnJson();
                         break;
-                    case GameSaveParametersSettings.ESavingType.Binary:
+                    case SaveKitParametersSettings.ESavingType.Binary:
                         WriteOnBinary();
                         break;
                     default:
@@ -58,7 +58,7 @@ namespace GameSaveKit.Runtime.Serializer
             
             void WriteOnJson()
             {
-                saveFilePath = GameSavePathSettings.GetOrCreateFilePath(fileName, "json");
+                saveFilePath = SaveKitPathSettings.GetOrCreateFilePath(fileName, "json");
                 
                 if (File.Exists(saveFilePath))
                 {
@@ -71,7 +71,7 @@ namespace GameSaveKit.Runtime.Serializer
 
             void WriteOnBinary()
             {
-                saveFilePath = GameSavePathSettings.GetOrCreateFilePath(fileName, "dat");
+                saveFilePath = SaveKitPathSettings.GetOrCreateFilePath(fileName, "dat");
                 
                 if (File.Exists(saveFilePath))
                 {
@@ -105,7 +105,7 @@ namespace GameSaveKit.Runtime.Serializer
         
         public static T ReadRecord<T>(int id) where T : GamePrefs, new()
         {
-            var saveFilePath = GameSavePathSettings.GetDirectory();
+            var saveFilePath = SaveKitPathSettings.GetDirectory();
             if (!Directory.Exists(saveFilePath))
             {
                 Debug.LogWarning("[Save-Load Tool] Save file does not exist");
@@ -115,12 +115,12 @@ namespace GameSaveKit.Runtime.Serializer
             T prefs;
 
             var fileName = UserFileName + id;
-            switch (GameSaveParametersSettings.SavingType)
+            switch (SaveKitParametersSettings.SavingType)
             {
-                case GameSaveParametersSettings.ESavingType.Json:
+                case SaveKitParametersSettings.ESavingType.Json:
                     prefs = ReadOnJson();
                     break;
-                case GameSaveParametersSettings.ESavingType.Binary:
+                case SaveKitParametersSettings.ESavingType.Binary:
                     prefs = ReadOnBinary();
                     break;
                 default:
@@ -137,7 +137,7 @@ namespace GameSaveKit.Runtime.Serializer
             // local functions
             T ReadOnJson()
             {
-                saveFilePath = GameSavePathSettings.GetOrCreateFilePath(fileName, "json");
+                saveFilePath = SaveKitPathSettings.GetOrCreateFilePath(fileName, "json");
                 
                 if (!File.Exists(saveFilePath))
                 {
@@ -151,7 +151,7 @@ namespace GameSaveKit.Runtime.Serializer
             
             T ReadOnBinary()
             {
-                saveFilePath = GameSavePathSettings.GetOrCreateFilePath(fileName, "dat");
+                saveFilePath = SaveKitPathSettings.GetOrCreateFilePath(fileName, "dat");
                 
                 if (!File.Exists(saveFilePath))
                 {

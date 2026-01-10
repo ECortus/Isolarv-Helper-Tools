@@ -2,7 +2,8 @@
     "name": "GameDevUtils.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:1078a85b23c6f9348ad1940c33461d92"
+        "GUID:1078a85b23c6f9348ad1940c33461d92",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
     ],
     "includePlatforms": [
         "Editor"
