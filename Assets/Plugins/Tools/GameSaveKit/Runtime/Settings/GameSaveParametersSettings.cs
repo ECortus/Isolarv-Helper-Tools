@@ -12,16 +12,29 @@ namespace GameSaveKit.Runtime.Settings
             Json, Binary
         }
         
-        public static ESavingType SavingType
+        static GameSaveSettingsSO SettingsSO
         {
-            get => (ESavingType)PlayerPrefs.GetInt("Saving_Type", 0);
-            set => PlayerPrefs.SetInt("Saving_Type", (int)value);
+            get
+            {
+                if (!GameSaveSettingsSO.HasInstance)
+                {
+                    GameSaveSettingsSO.FindInAssets("Save Kit Settings Scriptable Object");
+                }
+
+                return GameSaveSettingsSO.GetInstance;
+            }
         }
         
         public static bool LoadBehavioursOnAdding
         {
-            get => PlayerPrefs.GetInt("Load_Behaviour_On_Adding", 0) != 0;
-            set => PlayerPrefs.SetInt("Load_Behaviour_On_Adding", value ? 1 : 0);
+            get => SettingsSO.LoadBehavioursOnAdding;
+            set => SettingsSO.LoadBehavioursOnAdding = value;
+        }
+        
+        public static ESavingType SavingType
+        {
+            get => SettingsSO.SavingType;
+            set => SettingsSO.SavingType = value;
         }
     }
 }
