@@ -20,13 +20,13 @@ namespace GameDevUtils.Runtime
         
 #if UNITY_EDITOR
         
-        public static void FindAsset(string name)
+        public static T FindAsset(string name)
         {
             var prefab = AssetDatabase.FindAssets(name)[0];
             var path = AssetDatabase.GUIDToAssetPath(prefab);
             var prefabObject = AssetDatabase.LoadAssetAtPath<ScriptableObject>(path);
             
-            _instance = prefabObject as T;
+            return prefabObject as T;
         }
         
 #endif

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +13,7 @@ namespace GameDevUtils.Runtime.Settings
             get
             {
 #if UNITY_EDITOR
-                DevUtilsSettingsSO.FindAsset("Dev Utils Settings Scriptable Object");
-                
-                var instance = DevUtilsSettingsSO.GetInstance;
+                var instance = DevUtilsSettingsSO.FindAsset("Dev Utils Settings Scriptable Object");
                 return instance;
 #else
                 return DevUtilsSettingsSO.GetInstance;
@@ -25,13 +24,38 @@ namespace GameDevUtils.Runtime.Settings
         public static bool EnableLoadingScreen
         {
             get => SettingsSO.EnableLoadingScreen;
-            set => SettingsSO.EnableLoadingScreen = value;
+#if UNITY_EDITOR
+            set
+            {
+                var so = SettingsSO;
+                
+                so.EnableLoadingScreen = value;
+                SetObjectDirtyAndSave(so);
+            }
+#endif
+            
         }
 
         public static LoadSceneMode LoadSceneMode
         {
             get => SettingsSO.LoadSceneMode;
-            set => SettingsSO.LoadSceneMode = value;
+#if UNITY_EDITOR
+            set
+            {
+                var so = SettingsSO;
+                
+                so.LoadSceneMode = value;
+                SetObjectDirtyAndSave(so);
+            }
+#endif
         }
+
+#if UNITY_EDITOR
+        static void SetObjectDirtyAndSave(ScriptableObject obj)
+        {
+            EditorUtility.SetDirty(obj);
+            AssetDatabase.SaveAssetIfDirty(obj);
+        }
+#endif
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace GameSaveKit.Runtime.Settings
@@ -12,14 +13,12 @@ namespace GameSaveKit.Runtime.Settings
             Json, Binary
         }
 
-        static SaveKitSettingsSO SettingsSo
+        static SaveKitSettingsSO SettingsSO
         {
             get
             {
 #if UNITY_EDITOR
-                SaveKitSettingsSO.FindAsset("Save Kit Settings Scriptable Object");
-                
-                var instance = SaveKitSettingsSO.GetInstance;
+                var instance = SaveKitSettingsSO.FindAsset("Save Kit Settings Scriptable Object");
                 return instance;
 #else
                 return SaveKitSettingsSO.GetInstance;
@@ -29,14 +28,38 @@ namespace GameSaveKit.Runtime.Settings
         
         public static bool LoadBehavioursOnAdding
         {
-            get => SettingsSo.LoadBehavioursOnAdding;
-            set => SettingsSo.LoadBehavioursOnAdding = value;
+            get => SettingsSO.LoadBehavioursOnAdding;
+#if UNITY_EDITOR
+            set
+            {
+                var so = SettingsSO;
+                
+                so.LoadBehavioursOnAdding = value;
+                SetObjectDirtyAndSave(so);
+            }
+#endif
         }
         
         public static ESavingType SavingType
         {
-            get => SettingsSo.SavingType;
-            set => SettingsSo.SavingType = value;
+            get => SettingsSO.SavingType;
+#if UNITY_EDITOR
+            set
+            {
+                var so = SettingsSO;
+                
+                so.SavingType = value;
+                SetObjectDirtyAndSave(so);
+            }
+#endif
         }
+
+#if UNITY_EDITOR
+        static void SetObjectDirtyAndSave(ScriptableObject obj)
+        {
+            EditorUtility.SetDirty(obj);
+            AssetDatabase.SaveAssetIfDirty(obj);
+        }
+#endif
     }
 }
