@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Plugins/LocalizationModule/Editor/Editor%20Window/Language%20Window/LanguageEditWindow.uss?fileID=7433441132597879392&amp;guid=0cc07a6e6d87f1c4885c259543a5d2d3&amp;type=3#LanguageEditWindow"/>
+    <Style src="project://database/Assets/Plugins/Tools/LocalizationModule/Editor/Editor%20Window/Language%20Window/LanguageEditWindow.uss?fileID=7433441132597879392&amp;guid=0cc07a6e6d87f1c4885c259543a5d2d3&amp;type=3#LanguageEditWindow"/>
     <ui:VisualElement style="flex-grow: 1; width: auto; left: auto;">
         <ui:Label text="Edit selected language" class="c-label"/>
         <ui:GroupBox class="c-content-box" style="background-color: rgb(46, 46, 46); flex-direction: column; flex-wrap: nowrap; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px;">

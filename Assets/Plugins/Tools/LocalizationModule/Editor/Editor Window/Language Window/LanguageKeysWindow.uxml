@@ -1,9 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Plugins/LocalizationModule/Editor/Editor%20Window/Language%20Window/LanguageKeysWindow.uss?fileID=7433441132597879392&amp;guid=2d33847b67a81c74b9b3eb54b605b458&amp;type=3#LanguageKeysWindow"/>
+    <Style src="project://database/Assets/Plugins/Tools/LocalizationModule/Editor/Editor%20Window/Language%20Window/LanguageKeysWindow.uss?fileID=7433441132597879392&amp;guid=2d33847b67a81c74b9b3eb54b605b458&amp;type=3#LanguageKeysWindow"/>
     <ui:VisualElement style="flex-grow: 1; background-color: rgba(56, 56, 56, 0); opacity: 1; background-size: 100% 100%;">
         <ui:Label text="Languages" class="main-label c-main-label"/>
-        <ui:Button text="Add new language
-" name="add-language-button" class="c-add-language-button"/>
+        <ui:Button text="Add new language " name="add-language-button" class="c-add-language-button"/>
         <ui:ListView name="language-list-view" class="c-language-list-view"/>
     </ui:VisualElement>
     <ui:GroupBox name="content-box" class="c-content-box" style="position: absolute; align-self: flex-end; align-content: flex-start; align-items: stretch;"/>

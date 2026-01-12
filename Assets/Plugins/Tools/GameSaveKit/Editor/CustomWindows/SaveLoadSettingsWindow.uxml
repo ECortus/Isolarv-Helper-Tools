@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Plugins/GameSaveKit/Editor/CustomWindows/SaveLoadSettingsWindow.uss?fileID=7433441132597879392&amp;guid=e4ed030bfbd3bc045952f777af9acbb1&amp;type=3#SaveLoadSettingsWindow"/>
+    <Style src="project://database/Assets/Plugins/Tools/GameSaveKit/Editor/CustomWindows/SaveLoadSettingsWindow.uss?fileID=7433441132597879392&amp;guid=e4ed030bfbd3bc045952f777af9acbb1&amp;type=3#SaveLoadSettingsWindow"/>
     <ui:VisualElement class="box" style="flex-grow: 1;">
         <ui:VisualElement class="label-box" style="flex-grow: 1;">
             <ui:Label text="Settings" class="label"/>

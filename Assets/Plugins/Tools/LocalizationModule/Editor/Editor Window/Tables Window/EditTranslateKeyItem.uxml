@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Plugins/LocalizationModule/Editor/Editor%20Window/Tables%20Window/EditTranslateKeyItem.uss?fileID=7433441132597879392&amp;guid=e868c90501977024ea695acaf51044c3&amp;type=3#EditTranslateKeyItem"/>
+    <Style src="project://database/Assets/Plugins/Tools/LocalizationModule/Editor/Editor%20Window/Tables%20Window/EditTranslateKeyItem.uss?fileID=7433441132597879392&amp;guid=e868c90501977024ea695acaf51044c3&amp;type=3#EditTranslateKeyItem"/>
     <ui:VisualElement class="c-item" style="flex-grow: 1;">
         <ui:VisualElement name="language-header" style="flex-grow: 1; right: auto; left: 10px;">
             <LocalizationModule.Editor.UxmlImage name="language-image" class="c-language-image">

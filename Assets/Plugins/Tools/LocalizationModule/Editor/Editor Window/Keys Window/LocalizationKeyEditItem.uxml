@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Plugins/LocalizationModule/Editor/Editor%20Window/Keys%20Window/LocalizationEditWindow.uss?fileID=7433441132597879392&amp;guid=0baab2e966316484ca0e87cba7ce7e07&amp;type=3#LocalizationEditWindow"/>
+    <Style src="project://database/Assets/Plugins/Tools/LocalizationModule/Editor/Editor%20Window/Keys%20Window/LocalizationEditWindow.uss?fileID=7433441132597879392&amp;guid=0baab2e966316484ca0e87cba7ce7e07&amp;type=3#LocalizationEditWindow"/>
     <ui:VisualElement style="flex-grow: 1; border-bottom-width: 15px;">
         <ui:EnumField label="Type" value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" name="type-field"/>
         <ui:TextField label="Default key" placeholder-text="filler text" name="default-key-field"/>
