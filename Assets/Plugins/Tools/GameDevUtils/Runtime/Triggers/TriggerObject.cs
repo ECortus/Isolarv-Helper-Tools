@@ -70,6 +70,11 @@ namespace GameDevUtils.Runtime.Triggers
         {
             gameObject.SetActive(false);
         }
+        
+        public virtual void Renew()
+        {
+            Enable();
+        }
 
         void Setup2D()
         {
